@@ -1,0 +1,21 @@
+#Columns,8,,,,,,,
+#Header_Rows,12,,,,,,,
+Field_Name,Sample_Name,IGSN,Material,Field_Moist_Sediment_Mass_MOI_g,Dry_Sediment_Mass_MOI_g,Water_Mass_MOI_g,62948_Gravimetric_Moisture_g_per_g,Methods_Deviation
+Unit,N/A,N/A,N/A,grams,grams,grams,grams per gram,N/A
+Unit_Basis,N/A,N/A,N/A,as Field Moist Sediment,as Dry Sediment,as Water,as grams Water per gram Dry Sediment,N/A
+MethodID_Analysis,N/A,N/A,N/A,MOIS_T_AN_004,MOIS_T_AN_004,MOIS_T_AN_004,MOIS_T_AN_004,N/A
+MethodID_Inspection,N/A,N/A,N/A,MOIS_T_IN_004,MOIS_T_IN_004,MOIS_T_IN_004,MOIS_T_IN_004,N/A
+MethodID_Storage,N/A,N/A,N/A,MOIS_T_ST_004,MOIS_T_ST_004,MOIS_T_ST_004,MOIS_T_ST_004,N/A
+MethodID_Preservation,N/A,N/A,N/A,MOIS_T_PRES_004,MOIS_T_PRES_004,MOIS_T_PRES_004,MOIS_T_PRES_004,N/A
+MethodID_Preparation,N/A,N/A,N/A,MOIS_T_PREP_004,MOIS_T_PREP_004,MOIS_T_PREP_004,MOIS_T_PREP_004,N/A
+MethodID_DataProcessing,N/A,N/A,N/A,MOIS_T_DP_004,MOIS_T_DP_004,MOIS_T_DP_004,MOIS_T_DP_004,N/A
+Analysis_DetectionLimit,-9999,-9999,-9999,-9999,-9999,-9999,-9999,N/A
+Analysis_Precision,-9999,-9999,-9999,-9999,-9999,-9999,-9999,N/A
+Data_Status,N/A,N/A,N/A,ready_to_use,ready_to_use,ready_to_use,ready_to_use,N/A
+#Start_Data,YEP1_MOI-1,10.58052/IEPRS01EB,Sediment,2.01,1.94,0.07,0.04,N/A
+N/A,YEP1_MOI-2,10.58052/IEPRS01EB,Sediment,2.01,1.92,0.09,0.05,N/A
+N/A,YEP1_MOI-3,10.58052/IEPRS01EB,Sediment,2.01,1.93,0.08,0.04,N/A
+N/A,YEP2_MOI-1,10.58052/IEPRS01EA,Sediment,2.01,1.37,0.64,0.47,N/A
+N/A,YEP2_MOI-2,10.58052/IEPRS01EA,Sediment,2,1.35,0.65,0.48,N/A
+N/A,YEP2_MOI-3,10.58052/IEPRS01EA,Sediment,2,1.36,0.64,0.47,N/A
+#End_Data,,,,,,,,

@@ -1,0 +1,3 @@
+Parent_ID,Date,Time_Arriving,Time_Leaving,Latitude,Longitude,GPS_Accuracy_ft,Field_Staff,Weather,Dominant_Sediment_Type,Canopy_Coverage,Macrophyte_Coverage,Algal_Mat_Coverage,Vegetation,Water_Status,Notes
+YEP2, 2025-09-03,8:10,9:00,46.3729,-119.272098,11,"Xia Gillespie, Lupita Renteria, Doug McFarland",Sunny,Gravel/cobble (>2mm),No coverage,No coverage,No coverage,"Shrub, Grass",Wet and flowing,Dense array wet.
+YEP1, 2025-09-03,8:10,9:00,46.372907,-119.272176,9,"Xia Gillespie, Lupita Renteria, Doug McFarland",Sunny,Gravel/cobble (>2mm),Full coverage,No coverage,No coverage,"Shrub, Grass",Dry (completely dry),Dense array dry. 
