@@ -15,7 +15,7 @@ library(lmtest)
 
 # ===== User parameters =====
 min_points <- 2
-slope_thresh <- -0.006  
+slope_thresh <- -0.36 #in mg/L/h or -0.006 in mg/L/min  
 do_thresh <- 2
 high_do <- 14
 time_thresh_min <- 4
