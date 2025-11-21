@@ -10,7 +10,7 @@ library(broom)
 library(gridExtra)
 library(emmeans)
 
-# Read the data files
+# ====== Read the data files =====
 respiration_data <- read.csv("sediment_respiration_comparison_results.csv")
 npoc_data <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_NPOC_TN.csv", skip = 2) %>%
   filter(grepl('YEP',Sample_Name))
@@ -19,13 +19,14 @@ co2_data <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_CO
 mass_data <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_Water_Mass_Volume.csv", skip = 2)%>%
   filter(grepl('YEP',Sample_Name))
 
+# ====== Data cleaning =======
 # Function to extract treatment information from sample names
 extract_treatments <- function(sample_name) {
   if (str_detect(sample_name, "YEP[12][ABC]_")) {
     site <- str_extract(sample_name, "YEP[12]")
     replicate <- str_extract(sample_name, "(?<=YEP[12])[ABC]")
     condition <- str_extract(sample_name, "(?<=-)[HSU]")
-  } else if (str_detect(sample_name, "YEP_INC-W")) {
+  } else if (str_detect(sample_name, "-W")) {
     site <- "Water"
     replicate <- str_extract(sample_name, "\\d+$")
     condition <- str_extract(sample_name, "(?<=W)[HSU]")
@@ -36,20 +37,17 @@ extract_treatments <- function(sample_name) {
   }
   
   return(data.frame(
+    Sample_Name = sample_name,
     Site = site,
     Replicate = replicate,
     Condition = condition
   ))
 }
 
-# Clean respiration data with corrected treatment definitions
-respiration_treatments <- map_dfr(respiration_data$Sample_Name, extract_treatments)
-respiration_clean <- bind_cols(respiration_data, respiration_treatments) %>%
+# Create treatment lookup table for respiration data
+respiration_treatments <- map_dfr(respiration_data$Sample_Name, extract_treatments) %>%
   filter(!is.na(Site), !is.na(Condition), Site != "Water") %>%
   mutate(
-    # Make rates negative as requested
-    rate_negative = -abs(original_rate_mg_L_per_h),
-    # Correct treatment definitions
     Sediment_Type = case_when(
       Site == "YEP1" ~ "Dry Sediments",
       Site == "YEP2" ~ "Wet Sediments",
@@ -65,20 +63,29 @@ respiration_clean <- bind_cols(respiration_data, respiration_treatments) %>%
       Condition %in% c("H", "U") ~ "DOC Added",
       Condition == "S" ~ "No DOC (Control)",
       TRUE ~ NA_character_
-    ),
+    )
+  )
+
+# Clean respiration data using left_join
+respiration_clean <- respiration_data %>%
+  left_join(respiration_treatments, by = "Sample_Name") %>%
+  filter(!is.na(Site), !is.na(Condition)) %>%
+  mutate(
+    # Make rates negative as requested
+    rate_negative = -abs(original_rate_mg_L_per_h),
     Treatment_Combo = paste(Sediment_Type, DOC_Treatment, sep = " + ")
   )
 
-# Clean NPOC data with corrected treatments
+# Clean NPOC data
 npoc_clean <- npoc_data %>%
   filter(!is.na(Sample_Name), Sample_Name != "", !str_detect(Sample_Name, "^#")) %>%
-  dplyr::select(Sample_Name, Extractable_NPOC_mg_per_kg) %>%
+  select(Sample_Name, Extractable_NPOC_mg_per_kg) %>%
   filter(!is.na(Extractable_NPOC_mg_per_kg), 
          Extractable_NPOC_mg_per_kg != "-9999") %>%
   mutate(Extractable_NPOC_mg_per_kg = as.numeric(Extractable_NPOC_mg_per_kg))
 
-npoc_treatments <- map_dfr(npoc_clean$Sample_Name, extract_treatments)
-npoc_final <- bind_cols(npoc_clean, npoc_treatments) %>%
+# Create treatment lookup for NPOC data
+npoc_treatments <- map_dfr(npoc_clean$Sample_Name, extract_treatments) %>%
   filter(!is.na(Site), Site != "Water") %>%
   mutate(
     Sediment_Type = case_when(
@@ -99,16 +106,21 @@ npoc_final <- bind_cols(npoc_clean, npoc_treatments) %>%
     )
   )
 
-# Clean CO2 data with corrected treatments
+# Join NPOC data with treatments
+npoc_final <- npoc_clean %>%
+  left_join(npoc_treatments, by = "Sample_Name") %>%
+  filter(!is.na(Condition))
+
+# Clean CO2 data
 co2_clean <- co2_data %>%
   filter(!is.na(Sample_Name), Sample_Name != "", !str_detect(Sample_Name, "^#")) %>%
-  dplyr::select(Sample_Name, Partial_Pressure_CO2_moles_per_L) %>%
+  select(Sample_Name, Partial_Pressure_CO2_moles_per_L) %>%
   filter(!is.na(Partial_Pressure_CO2_moles_per_L), 
          Partial_Pressure_CO2_moles_per_L != "-9999") %>%
   mutate(Partial_Pressure_CO2_moles_per_L = as.numeric(Partial_Pressure_CO2_moles_per_L))
 
-co2_treatments <- map_dfr(co2_clean$Sample_Name, extract_treatments)
-co2_final <- bind_cols(co2_clean, co2_treatments) %>%
+# Create treatment lookup for CO2 data
+co2_treatments <- map_dfr(co2_clean$Sample_Name, extract_treatments) %>%
   filter(!is.na(Site), Site != "Water") %>%
   mutate(
     Sediment_Type = case_when(
@@ -129,25 +141,75 @@ co2_final <- bind_cols(co2_clean, co2_treatments) %>%
     )
   )
 
-# FIGURE 2: Boxplots of respiration rates by corrected treatments
-fig2 <- ggplot(respiration_clean, aes(x = DOC_Treatment, y = rate_negative, fill = Sediment_Type)) +
+# Join CO2 data with treatments
+co2_final <- co2_clean %>%
+  left_join(co2_treatments, by = "Sample_Name") %>%
+  filter(!is.na(Site))
+
+# Clean mass data for mixed effects model
+mass_clean <- mass_data %>%
+  filter(!is.na(Sample_Name), Sample_Name != "", !str_detect(Sample_Name, "^#")) %>%
+  select(Sample_Name, Water_Mass_g, Dry_Sediment_Mass_g) %>%
+  filter(!is.na(Water_Mass_g), !is.na(Dry_Sediment_Mass_g),
+         Water_Mass_g != "-9999", Dry_Sediment_Mass_g != "-9999") %>%
+  mutate(
+    Water_Mass_g = as.numeric(Water_Mass_g),
+    Dry_Sediment_Mass_g = as.numeric(Dry_Sediment_Mass_g)
+  )
+# ======== Plots ======
+#Boxplots of respiration rates per dry mass
+# Normalize per dry mass
+respiration_clean = respiration_clean %>%
+  left_join(mass_clean ,
+            by = 'Sample_Name') %>%
+  mutate(Respiration_Rate_mg_DO_per_kg_per_H = ifelse(is.na(Dry_Sediment_Mass_g), -9999,
+                                                      ((rate_negative*Water_Mass_g*0.001)/(Dry_Sediment_Mass_g*0.001)))) %>%
+  filter(!is.na(rate_negative)) 
+
+fig2 <- ggplot(respiration_clean, aes(x = DOC_Treatment, y = Respiration_Rate_mg_DO_per_kg_per_H, fill = Sediment_Type)) +
   geom_boxplot(position = position_dodge(0.8)) +
   geom_point(position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.2), 
              alpha = 0.6) +
   labs(
-    title = "Sediment Respiration Rates by DOC Treatment and Sediment Type",
-    x = "DOC Treatment",
-    y = "Respiration Rate (mg O₂ L⁻¹ h⁻¹)",
+    x = " ",
+    y = "Respiration Rate (mg O₂ kg⁻¹ h⁻¹)",
     fill = "Sediment Type"
   ) +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = 'bottom', axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = c("Dry Sediments" = "lightblue", "Wet Sediments" = "darkblue"))
 
 print(fig2)
 
+fig3 <- ggplot(respiration_clean, aes(fill = DOC_Treatment, y = Respiration_Rate_mg_DO_per_kg_per_H, x = Sediment_Type)) +
+  geom_boxplot(position = position_dodge(0.8)) +
+  geom_point(position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.2), 
+             alpha = 0.6) +
+  labs(
+    x = " ",
+    y = "Respiration Rate (mg O₂ kg⁻¹ h⁻¹)",
+    fill = "Sediment Type"
+  ) +
+  theme_bw() +
+  theme(legend.position = 'bottom', axis.text.x = element_text(angle = 45, hjust = 1)) 
+
+
+ggplot(respiration_clean, aes(x = DOC_Treatment, y = rate_negative, fill = Sediment_Type)) +
+  geom_boxplot(position = position_dodge(0.8)) +
+  geom_point(position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.2), 
+             alpha = 0.6) +
+  labs(
+    x = " ",
+    y = "Respiration Rate (mg O₂ L⁻¹ h⁻¹)",
+    fill = "Sediment Type"
+  ) +
+  theme_bw() +
+  theme(legend.position = 'bottom', axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_manual(values = c("Dry Sediments" = "lightblue", "Wet Sediments" = "darkblue"))
+
+
 # ANOVA for respiration rates
-respiration_anova <- aov(rate_negative ~ Sediment_Type * DOC_Treatment, data = respiration_clean)
+respiration_anova <- aov(Respiration_Rate_mg_DO_per_kg_per_H ~ Sediment_Type * DOC_Treatment, data = respiration_clean)
 print("ANOVA Results for Respiration Rates:")
 print(summary(respiration_anova))
 print("Type III ANOVA:")
@@ -165,14 +227,12 @@ fig_npoc <- ggplot(npoc_final, aes(x = DOC_Treatment, y = Extractable_NPOC_mg_pe
   geom_boxplot(position = position_dodge(0.8)) +
   geom_point(position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.2), 
              alpha = 0.6) +
-  labs(
-    title = "NPOC Concentrations by DOC Treatment and Sediment Type",
-    x = "DOC Treatment",
+  labs(x = "DOC Treatment",
     y = "NPOC (mg kg⁻¹ dry sediment)",
     fill = "Sediment Type"
   ) +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = 'bottom',  axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = c("Dry Sediments" = "lightgreen", "Wet Sediments" = "darkgreen"))
 
 print(fig_npoc)
@@ -182,14 +242,12 @@ fig_co2 <- ggplot(co2_final, aes(x = DOC_Treatment, y = Partial_Pressure_CO2_mol
   geom_boxplot(position = position_dodge(0.8)) +
   geom_point(position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.2), 
              alpha = 0.6) +
-  labs(
-    title = "CO₂ Concentrations by DOC Treatment and Sediment Type",
-    x = "DOC Treatment",
+  labs( x = "DOC Treatment",
     y = "CO₂ (mol L⁻¹)",
     fill = "Sediment Type"
   ) +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = 'bottom', axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_manual(values = c("Dry Sediments" = "lightcoral", "Wet Sediments" = "darkred")) +
   scale_y_continuous(labels = scales::scientific)
 
