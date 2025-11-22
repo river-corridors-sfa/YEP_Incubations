@@ -11,11 +11,10 @@ library(gridExtra)
 library(emmeans)
 
 # ====== Read the data files =====
-respiration_data <- read.csv("sediment_respiration_comparison_results.csv")
+respiration_data <- read.csv("Data/segmented_respiration_analysis.csv")
 npoc_data <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_NPOC_TN.csv", skip = 2) %>%
   filter(grepl('YEP',Sample_Name))
-co2_data <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_CO2.csv", skip = 2) %>%
-  filter(grepl('YEP',Sample_Name))
+co2_data <- read.csv('data/co2_production_rates.csv')
 mass_data <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_Water_Mass_Volume.csv", skip = 2)%>%
   filter(grepl('YEP',Sample_Name))
 
@@ -71,15 +70,14 @@ respiration_clean <- respiration_data %>%
   left_join(respiration_treatments, by = "Sample_Name") %>%
   filter(!is.na(Site), !is.na(Condition)) %>%
   mutate(
-    # Make rates negative as requested
-    rate_negative = -abs(original_rate_mg_L_per_h),
+    rate_negative = Rate_mg_L_h_break_1,
     Treatment_Combo = paste(Sediment_Type, DOC_Treatment, sep = " + ")
   )
 
 # Clean NPOC data
 npoc_clean <- npoc_data %>%
   filter(!is.na(Sample_Name), Sample_Name != "", !str_detect(Sample_Name, "^#")) %>%
-  select(Sample_Name, Extractable_NPOC_mg_per_kg) %>%
+  dplyr::select(Sample_Name, Extractable_NPOC_mg_per_kg) %>%
   filter(!is.na(Extractable_NPOC_mg_per_kg), 
          Extractable_NPOC_mg_per_kg != "-9999") %>%
   mutate(Extractable_NPOC_mg_per_kg = as.numeric(Extractable_NPOC_mg_per_kg))
@@ -114,10 +112,8 @@ npoc_final <- npoc_clean %>%
 # Clean CO2 data
 co2_clean <- co2_data %>%
   filter(!is.na(Sample_Name), Sample_Name != "", !str_detect(Sample_Name, "^#")) %>%
-  select(Sample_Name, Partial_Pressure_CO2_moles_per_L) %>%
-  filter(!is.na(Partial_Pressure_CO2_moles_per_L), 
-         Partial_Pressure_CO2_moles_per_L != "-9999") %>%
-  mutate(Partial_Pressure_CO2_moles_per_L = as.numeric(Partial_Pressure_CO2_moles_per_L))
+  dplyr::select(Sample_Name, CO2_Production_Rate_mol_per_L_per_H) %>%
+  mutate(CO2_Production_Rate_mol_per_L_per_H= as.numeric(CO2_Production_Rate_mol_per_L_per_H))
 
 # Create treatment lookup for CO2 data
 co2_treatments <- map_dfr(co2_clean$Sample_Name, extract_treatments) %>%
@@ -149,7 +145,7 @@ co2_final <- co2_clean %>%
 # Clean mass data for mixed effects model
 mass_clean <- mass_data %>%
   filter(!is.na(Sample_Name), Sample_Name != "", !str_detect(Sample_Name, "^#")) %>%
-  select(Sample_Name, Water_Mass_g, Dry_Sediment_Mass_g) %>%
+  dplyr::select(Sample_Name, Water_Mass_g, Dry_Sediment_Mass_g) %>%
   filter(!is.na(Water_Mass_g), !is.na(Dry_Sediment_Mass_g),
          Water_Mass_g != "-9999", Dry_Sediment_Mass_g != "-9999") %>%
   mutate(
@@ -238,17 +234,17 @@ fig_npoc <- ggplot(npoc_final, aes(x = DOC_Treatment, y = Extractable_NPOC_mg_pe
 print(fig_npoc)
 
 # CO2 boxplots
-fig_co2 <- ggplot(co2_final, aes(x = DOC_Treatment, y = Partial_Pressure_CO2_moles_per_L, fill = Sediment_Type)) +
+fig_co2 <- ggplot(co2_final, aes(x = DOC_Treatment, y = CO2_Production_Rate_mol_per_L_per_H, fill = Sediment_Type)) +
   geom_boxplot(position = position_dodge(0.8)) +
   geom_point(position = position_jitterdodge(dodge.width = 0.8, jitter.width = 0.2), 
              alpha = 0.6) +
   labs( x = "DOC Treatment",
-    y = "CO₂ (mol L⁻¹)",
+    y = "CO₂Production (mol L⁻¹)",
     fill = "Sediment Type"
   ) +
   theme_bw() +
   theme(legend.position = 'bottom', axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_fill_manual(values = c("Dry Sediments" = "lightcoral", "Wet Sediments" = "darkred")) +
+  scale_fill_manual(values = c("Dry Sediments" = "coral", "Wet Sediments" = "brown")) +
   scale_y_continuous(labels = scales::scientific)
 
 print(fig_co2)
@@ -354,12 +350,13 @@ print("Effect sizes for contrasts:")
 print(contrast_effects)
 
 # Save plots
-ggsave("Figure2_Respiration_by_DOC_Treatment.png", fig2, width = 12, height = 8, dpi = 300)
-ggsave("NPOC_by_DOC_Treatment.png", fig_npoc, width = 12, height = 8, dpi = 300)
-ggsave("CO2_by_DOC_Treatment.png", fig_co2, width = 12, height = 8, dpi = 300)
+ggsave("Figures/Figure2_Respiration_by_DOC_Treatment.png", fig2, width = 12, height = 8, dpi = 300)
+ggsave("Figures/Respiration_by_DOC_Treatment.png", fig3, width = 12, height = 8, dpi = 300)
+ggsave("Figures/NPOC_by_DOC_Treatment.png", fig_npoc, width = 12, height = 8, dpi = 300)
+ggsave("Figures/CO2_Production_by_DOC_Treatment.png", fig_co2, width = 12, height = 8, dpi = 300)
 
 # Save effect size table
-write.csv(effect_size_summary, "Effect_Size_Summary_DOC_vs_Control.csv", row.names = FALSE)
+write.csv(effect_size_summary, "Data/Effect_Size_Summary_DOC_vs_Control.csv", row.names = FALSE)
 
 print("Analysis complete! The effect size analysis specifically compares:")
 print("1. PyOM treatment (H) vs Synthetic water control (S)")
