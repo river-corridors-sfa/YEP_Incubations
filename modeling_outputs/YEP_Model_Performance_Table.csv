@@ -1,0 +1,7 @@
+"Treatment_Type","Linear_SSR","Biotic_SSR","Combined_SSR","Best_Model"
+"Dry_Control",61.2,37.4,1.9,"Combined"
+"Dry_HighBurn_DOC",44.1,39.5,0.8,"Combined"
+"Dry_Unburned_DOC",31.7,46.5,0.2,"Combined"
+"Wet_Control",2.1,12,0.2,"Combined"
+"Wet_HighBurn_DOC",3.3,11.6,0.2,"Combined"
+"Wet_Unburned_DOC",1.6,10.2,0.1,"Combined"
