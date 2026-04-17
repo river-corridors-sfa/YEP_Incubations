@@ -1,0 +1,19 @@
+Treatment,Statistic,Property,.y.,group1,group2,n1,n2,statistic,p,p.adj,p.adj.signif
+Control,Mean,AIMOD,Value,Dry,Wet,5,5,3,0.0556,0.20016,ns
+Unburned + DOC,Mean,AIMOD,Value,Dry,Wet,5,4,4,0.19,0.4885714285714286,ns
+High Burn + DOC,Mean,AIMOD,Value,Dry,Wet,5,4,0,0.0159,0.1431,ns
+Control,Mean,DBE,Value,Dry,Wet,5,5,6,0.222,0.4995,ns
+Unburned + DOC,Mean,DBE,Value,Dry,Wet,5,4,4,0.19,0.4885714285714286,ns
+High Burn + DOC,Mean,DBE,Value,Dry,Wet,5,4,7,0.556,0.714857142857143,ns
+Control,Mean,NOSC,Value,Dry,Wet,5,5,10,0.69,0.828,ns
+Unburned + DOC,Mean,NOSC,Value,Dry,Wet,5,4,7,0.556,0.714857142857143,ns
+High Burn + DOC,Mean,NOSC,Value,Dry,Wet,5,4,0,0.0159,0.1431,ns
+Control,Median,AIMOD,Value,Dry,Wet,5,5,9,0.518,0.714857142857143,ns
+Unburned + DOC,Median,AIMOD,Value,Dry,Wet,5,4,5,0.286,0.572,ns
+High Burn + DOC,Median,AIMOD,Value,Dry,Wet,5,4,1,0.0317,0.16424999999999998,ns
+Control,Median,DBE,Value,Dry,Wet,5,5,12.5,1,1,ns
+Unburned + DOC,Median,DBE,Value,Dry,Wet,5,4,10,1,1,ns
+High Burn + DOC,Median,DBE,Value,Dry,Wet,5,4,6,0.359,0.5874545454545455,ns
+Control,Median,NOSC,Value,Dry,Wet,5,5,11,0.841,0.946125,ns
+Unburned + DOC,Median,NOSC,Value,Dry,Wet,5,4,5.5,0.325,0.5850000000000001,ns
+High Burn + DOC,Median,NOSC,Value,Dry,Wet,5,4,1,0.0365,0.16424999999999998,ns

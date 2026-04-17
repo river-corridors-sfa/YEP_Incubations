@@ -1,0 +1,22 @@
+Treatment,Class,.y.,group1,group2,n1,n2,statistic,p,p.adj,p.adj.signif
+Control,Condensed Aromatic,rel_abund,Dry,Wet,5,5,3,0.0556,0.14595,ns
+Unburned + DOC,Condensed Aromatic,rel_abund,Dry,Wet,5,4,6,0.413,0.4564736842105263,ns
+High Burn + DOC,Condensed Aromatic,rel_abund,Dry,Wet,5,4,0,0.0159,0.06678,ns
+Control,Aromatic,rel_abund,Dry,Wet,5,5,7,0.31,0.38294117647058823,ns
+Unburned + DOC,Aromatic,rel_abund,Dry,Wet,5,4,4,0.19,0.28500000000000003,ns
+High Burn + DOC,Aromatic,rel_abund,Dry,Wet,5,4,3,0.111,0.2331,ns
+Control,Unsaturated/Lignin,rel_abund,Dry,Wet,5,5,12,1,1,ns
+Unburned + DOC,Unsaturated/Lignin,rel_abund,Dry,Wet,5,4,4,0.19,0.28500000000000003,ns
+High Burn + DOC,Unsaturated/Lignin,rel_abund,Dry,Wet,5,4,3,0.111,0.2331,ns
+Control,Aliphatic,rel_abund,Dry,Wet,5,5,22,0.0556,0.14595,ns
+Unburned + DOC,Aliphatic,rel_abund,Dry,Wet,5,4,15,0.286,0.37537499999999996,ns
+High Burn + DOC,Aliphatic,rel_abund,Dry,Wet,5,4,16,0.19,0.28500000000000003,ns
+Control,Aliphatic_N,rel_abund,Dry,Wet,5,5,25,0.00794,0.06678,ns
+Unburned + DOC,Aliphatic_N,rel_abund,Dry,Wet,5,4,20,0.0159,0.06678,ns
+High Burn + DOC,Aliphatic_N,rel_abund,Dry,Wet,5,4,16,0.19,0.28500000000000003,ns
+Control,Lipid,rel_abund,Dry,Wet,5,5,0,0.00794,0.06678,ns
+Unburned + DOC,Lipid,rel_abund,Dry,Wet,5,4,5,0.286,0.37537499999999996,ns
+High Burn + DOC,Lipid,rel_abund,Dry,Wet,5,4,20,0.0159,0.06678,ns
+Control,Carbohydrate,rel_abund,Dry,Wet,5,5,3,0.0556,0.14595,ns
+Unburned + DOC,Carbohydrate,rel_abund,Dry,Wet,5,4,14,0.413,0.4564736842105263,ns
+High Burn + DOC,Carbohydrate,rel_abund,Dry,Wet,5,4,11,0.905,0.95025,ns

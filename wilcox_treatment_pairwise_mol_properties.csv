@@ -1,0 +1,37 @@
+Moisture,Statistic,Property,.y.,group1,group2,n1,n2,statistic,p,p.adj,p.adj.signif
+Dry,Mean,AIMOD,Value,Control,Unburned + DOC,5,5,7,0.31,0.744,ns
+Dry,Mean,AIMOD,Value,Control,High Burn + DOC,5,5,6,0.222,0.7265454545454546,ns
+Dry,Mean,AIMOD,Value,Unburned + DOC,High Burn + DOC,5,5,9,0.548,0.847741935483871,ns
+Wet,Mean,AIMOD,Value,Control,Unburned + DOC,5,4,12,0.73,0.847741935483871,ns
+Wet,Mean,AIMOD,Value,Control,High Burn + DOC,5,4,1,0.032,0.23040000000000002,ns
+Wet,Mean,AIMOD,Value,Unburned + DOC,High Burn + DOC,4,4,0,0.029,0.23040000000000002,ns
+Dry,Mean,DBE,Value,Control,Unburned + DOC,5,5,6,0.222,0.7265454545454546,ns
+Dry,Mean,DBE,Value,Control,High Burn + DOC,5,5,10,0.69,0.847741935483871,ns
+Dry,Mean,DBE,Value,Unburned + DOC,High Burn + DOC,5,5,17,0.421,0.7812,ns
+Wet,Mean,DBE,Value,Control,Unburned + DOC,5,4,8,0.73,0.847741935483871,ns
+Wet,Mean,DBE,Value,Control,High Burn + DOC,5,4,7,0.556,0.847741935483871,ns
+Wet,Mean,DBE,Value,Unburned + DOC,High Burn + DOC,4,4,4,0.343,0.77175,ns
+Dry,Mean,NOSC,Value,Control,Unburned + DOC,5,5,8,0.421,0.7812,ns
+Dry,Mean,NOSC,Value,Control,High Burn + DOC,5,5,7,0.31,0.744,ns
+Dry,Mean,NOSC,Value,Unburned + DOC,High Burn + DOC,5,5,10,0.69,0.847741935483871,ns
+Wet,Mean,NOSC,Value,Control,Unburned + DOC,5,4,12,0.73,0.847741935483871,ns
+Wet,Mean,NOSC,Value,Control,High Burn + DOC,5,4,2,0.064,0.3342857142857143,ns
+Wet,Mean,NOSC,Value,Unburned + DOC,High Burn + DOC,4,4,0,0.029,0.23040000000000002,ns
+Dry,Median,AIMOD,Value,Control,Unburned + DOC,5,5,7,0.295,0.744,ns
+Dry,Median,AIMOD,Value,Control,High Burn + DOC,5,5,9,0.526,0.847741935483871,ns
+Dry,Median,AIMOD,Value,Unburned + DOC,High Burn + DOC,5,5,14,0.841,0.9174545454545453,ns
+Wet,Median,AIMOD,Value,Control,Unburned + DOC,5,4,12,0.712,0.847741935483871,ns
+Wet,Median,AIMOD,Value,Control,High Burn + DOC,5,4,2,0.065,0.3342857142857143,ns
+Wet,Median,AIMOD,Value,Unburned + DOC,High Burn + DOC,4,4,0,0.029,0.23040000000000002,ns
+Dry,Median,DBE,Value,Control,Unburned + DOC,5,5,8.5,0.434,0.7812,ns
+Dry,Median,DBE,Value,Control,High Burn + DOC,5,5,12.5,1,1,ns
+Dry,Median,DBE,Value,Unburned + DOC,High Burn + DOC,5,5,16.5,0.434,0.7812,ns
+Wet,Median,DBE,Value,Control,Unburned + DOC,5,4,10,1,1,ns
+Wet,Median,DBE,Value,Control,High Burn + DOC,5,4,7.5,0.606,0.847741935483871,ns
+Wet,Median,DBE,Value,Unburned + DOC,High Burn + DOC,4,4,6,0.617,0.847741935483871,ns
+Dry,Median,NOSC,Value,Control,Unburned + DOC,5,5,6.5,0.249,0.744,ns
+Dry,Median,NOSC,Value,Control,High Burn + DOC,5,5,5,0.139,0.556,ns
+Dry,Median,NOSC,Value,Unburned + DOC,High Burn + DOC,5,5,11,0.833,0.9174545454545453,ns
+Wet,Median,NOSC,Value,Control,Unburned + DOC,5,4,10,1,1,ns
+Wet,Median,NOSC,Value,Control,High Burn + DOC,5,4,2.5,0.085,0.3825,ns
+Wet,Median,NOSC,Value,Unburned + DOC,High Burn + DOC,4,4,0,0.029,0.23040000000000002,ns
