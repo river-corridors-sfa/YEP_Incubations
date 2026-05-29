@@ -1,0 +1,385 @@
+﻿Sample_Name,Sample_Type,Sample_Material,Sediment_Field_Moisture_Conditions,Incubation_Day,Treatment,Analysis,Replicate_Identifier
+YEP1A_GAS-H2,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_1,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),2
+YEP1A_GAS-S1,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Carbon dioxide (CO2),1
+YEP1A_GAS-S2,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Carbon dioxide (CO2),2
+YEP1A_GAS-U1,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_1,Unburned Douglas fir leachate,Carbon dioxide (CO2),1
+YEP1B_GAS-H1,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),1
+YEP1B_GAS-H3,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),3
+YEP1B_GAS-S3,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_2,Columbia River synthetic river water,Carbon dioxide (CO2),3
+YEP1B_GAS-U2,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Carbon dioxide (CO2),2
+YEP1B_GAS-U3,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Carbon dioxide (CO2),3
+YEP1C_GAS-H4,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),4
+YEP1C_GAS-H5,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),5
+YEP1C_GAS-S4,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Carbon dioxide (CO2),4
+YEP1C_GAS-S5,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Carbon dioxide (CO2),5
+YEP1C_GAS-U4,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Carbon dioxide (CO2),4
+YEP1C_GAS-U5,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Carbon dioxide (CO2),5
+YEP2A_GAS-H1,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),1
+YEP2A_GAS-H2,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),2
+YEP2A_GAS-S1,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Carbon dioxide (CO2),1
+YEP2A_GAS-S2,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Carbon dioxide (CO2),2
+YEP2A_GAS-U1,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Carbon dioxide (CO2),1
+YEP2A_GAS-U2,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Carbon dioxide (CO2),2
+YEP2B_GAS-H3,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_2,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),3
+YEP2B_GAS-S3,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_2,Columbia River synthetic river water,Carbon dioxide (CO2),3
+YEP2B_GAS-U3,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_2,Unburned Douglas fir leachate,Carbon dioxide (CO2),3
+YEP2C_GAS-H4,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),4
+YEP2C_GAS-H5,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Carbon dioxide (CO2),5
+YEP2C_GAS-S4,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Carbon dioxide (CO2),4
+YEP2C_GAS-S5,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Carbon dioxide (CO2),5
+YEP2C_GAS-U4,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Carbon dioxide (CO2),4
+YEP2C_GAS-U5,Subsample,Headspace equilibrated gas sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Carbon dioxide (CO2),5
+YEP_OCN-HKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),A
+YEP_OCN-HKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),B
+YEP_OCN-HKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),C
+YEP_OCN-HX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP_OCN-HX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP_OCN-HX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP_OCN-SKA,Subsample,Treatment solution,N/A,Day_1,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),A
+YEP_OCN-SKB,Subsample,Treatment solution,N/A,Day_2,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),B
+YEP_OCN-SKC,Subsample,Treatment solution,N/A,Day_3,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),C
+YEP_OCN-SX1,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP_OCN-SX2,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP_OCN-SX3,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP_OCN-UKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),A
+YEP_OCN-UKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),B
+YEP_OCN-UKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),C
+YEP_OCN-UX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP_OCN-UX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP_OCN-UX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP_OCN-WH1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP_OCN-WH2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP_OCN-WS1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP_OCN-WS2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP_OCN-WU1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP_OCN-WU2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP_SOC_BLK-1,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP_SOC_BLK-2,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1_SOC-1,Subsample,Pre-incubation sediment,Dry,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP1_SOC-2,Subsample,Pre-incubation sediment,Dry,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1_SOC-3,Subsample,Pre-incubation sediment,Dry,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP1A_SOC-1,Subsample,Pre-incubation sediment,Dry,Day_1,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP1A_SOC-2,Subsample,Pre-incubation sediment,Dry,Day_1,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1A_SOC-3,Subsample,Pre-incubation sediment,Dry,Day_1,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP1A_SOC-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1A_SOC-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_1,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP1A_SOC-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1A_SOC-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP1B_SOC-1,Subsample,Pre-incubation sediment,Dry,Day_2,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP1B_SOC-2,Subsample,Pre-incubation sediment,Dry,Day_2,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1B_SOC-3,Subsample,Pre-incubation sediment,Dry,Day_2,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP1B_SOC-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_2,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP1B_SOC-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_2,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP1B_SOC-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_2,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP1B_SOC-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_2,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1B_SOC-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_2,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP1C_SOC-1,Subsample,Pre-incubation sediment,Dry,Day_3,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP1C_SOC-2,Subsample,Pre-incubation sediment,Dry,Day_3,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP1C_SOC-3,Subsample,Pre-incubation sediment,Dry,Day_3,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP1C_SOC-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_3,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),4
+YEP1C_SOC-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_3,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),5
+YEP1C_SOC-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_3,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),4
+YEP1C_SOC-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_3,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),5
+YEP1C_SOC-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_3,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),4
+YEP1C_SOC-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry,Day_3,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),5
+YEP2_SOC-1,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP2_SOC-2,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP2_SOC-3,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP2A_SOC-1,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP2A_SOC-2,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP2A_SOC-3,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP2A_SOC-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet,Day_1,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP2A_SOC-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP2A_SOC-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet,Day_1,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP2A_SOC-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP2A_SOC-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet,Day_1,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP2A_SOC-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP2B_SOC-1,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP2B_SOC-2,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP2B_SOC-3,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP2B_SOC-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP2B_SOC-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP2B_SOC-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP2C_SOC-1,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),1
+YEP2C_SOC-2,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),2
+YEP2C_SOC-3,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),3
+YEP2C_SOC-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),4
+YEP2C_SOC-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),5
+YEP2C_SOC-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),4
+YEP2C_SOC-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),5
+YEP2C_SOC-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),4
+YEP2C_SOC-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Dissolved organic carbon (DOC; measured as nonpurgeable organic carbon; NPOC) and total dissolved nitrogen (TDN),5
+YEP_INC-WH1,Reactor,Treatment solution only incubation,N/A,Day_2,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,1
+YEP_INC-WH2,Reactor,Treatment solution only incubation,N/A,Day_2,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,2
+YEP_INC-WS1,Reactor,Treatment solution only incubation,N/A,Day_2,Columbia River synthetic river water,Dissolved oxygen and temperature,1
+YEP_INC-WS2,Reactor,Treatment solution only incubation,N/A,Day_2,Columbia River synthetic river water,Dissolved oxygen and temperature,2
+YEP_INC-WU1,Reactor,Treatment solution only incubation,N/A,Day_2,Unburned Douglas fir leachate,Dissolved oxygen and temperature,1
+YEP_INC-WU2,Reactor,Treatment solution only incubation,N/A,Day_2,Unburned Douglas fir leachate,Dissolved oxygen and temperature,2
+YEP1A_INC-H2,Reactor,Treatment solution and sediment incubation,Dry ,Day_1,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,2
+YEP1A_INC-S1,Reactor,Treatment solution and sediment incubation,Dry ,Day_1,Columbia River synthetic river water,Dissolved oxygen and temperature,1
+YEP1A_INC-S2,Reactor,Treatment solution and sediment incubation,Dry ,Day_1,Columbia River synthetic river water,Dissolved oxygen and temperature,2
+YEP1A_INC-U1,Reactor,Treatment solution and sediment incubation,Dry ,Day_1,Unburned Douglas fir leachate,Dissolved oxygen and temperature,1
+YEP1B_INC-H1,Reactor,Treatment solution and sediment incubation,Dry,Day_2,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,1
+YEP1B_INC-H3,Reactor,Treatment solution and sediment incubation,Dry,Day_2,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,3
+YEP1B_INC-S3,Reactor,Treatment solution and sediment incubation,Dry,Day_2,Columbia River synthetic river water,Dissolved oxygen and temperature,3
+YEP1B_INC-U2,Reactor,Treatment solution and sediment incubation,Dry,Day_2,Unburned Douglas fir leachate,Dissolved oxygen and temperature,2
+YEP1B_INC-U3,Reactor,Treatment solution and sediment incubation,Dry,Day_2,Unburned Douglas fir leachate,Dissolved oxygen and temperature,3
+YEP1C_INC-H4,Reactor,Treatment solution and sediment incubation,Dry,Day_3,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,4
+YEP1C_INC-H5,Reactor,Treatment solution and sediment incubation,Dry,Day_3,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,5
+YEP1C_INC-S4,Reactor,Treatment solution and sediment incubation,Dry,Day_3,Columbia River synthetic river water,Dissolved oxygen and temperature,4
+YEP1C_INC-S5,Reactor,Treatment solution and sediment incubation,Dry,Day_3,Columbia River synthetic river water,Dissolved oxygen and temperature,5
+YEP1C_INC-U4,Reactor,Treatment solution and sediment incubation,Dry,Day_3,Unburned Douglas fir leachate,Dissolved oxygen and temperature,4
+YEP1C_INC-U5,Reactor,Treatment solution and sediment incubation,Dry,Day_3,Unburned Douglas fir leachate,Dissolved oxygen and temperature,5
+YEP2A_INC-H1,Reactor,Treatment solution and sediment incubation,Wet,Day_1,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,1
+YEP2A_INC-H2,Reactor,Treatment solution and sediment incubation,Wet,Day_1,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,2
+YEP2A_INC-S1,Reactor,Treatment solution and sediment incubation,Wet,Day_1,Columbia River synthetic river water,Dissolved oxygen and temperature,1
+YEP2A_INC-S2,Reactor,Treatment solution and sediment incubation,Wet,Day_1,Columbia River synthetic river water,Dissolved oxygen and temperature,2
+YEP2A_INC-U1,Reactor,Treatment solution and sediment incubation,Wet,Day_1,Unburned Douglas fir leachate,Dissolved oxygen and temperature,1
+YEP2A_INC-U2,Reactor,Treatment solution and sediment incubation,Wet,Day_1,Unburned Douglas fir leachate,Dissolved oxygen and temperature,2
+YEP2B_INC-H3,Reactor,Treatment solution and sediment incubation,Wet,Day_2,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,3
+YEP2B_INC-S3,Reactor,Treatment solution and sediment incubation,Wet,Day_2,Columbia River synthetic river water,Dissolved oxygen and temperature,3
+YEP2B_INC-U3,Reactor,Treatment solution and sediment incubation,Wet,Day_2,Unburned Douglas fir leachate,Dissolved oxygen and temperature,3
+YEP2C_INC-H4,Reactor,Treatment solution and sediment incubation,Wet ,Day_3,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,4
+YEP2C_INC-H5,Reactor,Treatment solution and sediment incubation,Wet ,Day_3,Burned (high severity) Douglas fir leachate,Dissolved oxygen and temperature,5
+YEP2C_INC-S4,Reactor,Treatment solution and sediment incubation,Wet ,Day_3,Columbia River synthetic river water,Dissolved oxygen and temperature,4
+YEP2C_INC-S5,Reactor,Treatment solution and sediment incubation,Wet ,Day_3,Columbia River synthetic river water,Dissolved oxygen and temperature,5
+YEP2C_INC-U4,Reactor,Treatment solution and sediment incubation,Wet ,Day_3,Unburned Douglas fir leachate,Dissolved oxygen and temperature,4
+YEP2C_INC-U5,Reactor,Treatment solution and sediment incubation,Wet ,Day_3,Unburned Douglas fir leachate,Dissolved oxygen and temperature,5
+YEP_ICR-HKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),A
+YEP_ICR-HKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),B
+YEP_ICR-HKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),C
+YEP_ICR-SKA,Subsample,Treatment solution,N/A,Day_1,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),A
+YEP_ICR-SKB,Subsample,Treatment solution,N/A,Day_2,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),B
+YEP_ICR-SKC,Subsample,Treatment solution,N/A,Day_3,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),C
+YEP_ICR-UKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),A
+YEP_ICR-UKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),B
+YEP_ICR-UKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),C
+YEP_ICR-WH1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP_ICR-WH2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP_ICR-WS1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP_ICR-WS2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP_ICR-WU1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP_ICR-WU2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP_SIR_BLK-1,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP_SIR_BLK-2,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1_SIR-1,Subsample,Pre-incubation sediment,Dry ,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP1_SIR-2,Subsample,Pre-incubation sediment,Dry ,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1_SIR-3,Subsample,Pre-incubation sediment,Dry ,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1A_SIR-1,Subsample,Pre-incubation sediment,Dry ,Day_1,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP1A_SIR-2,Subsample,Pre-incubation sediment,Dry ,Day_1,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1A_SIR-3,Subsample,Pre-incubation sediment,Dry ,Day_1,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1A_SIR-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1A_SIR-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP1A_SIR-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1A_SIR-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP1B_SIR-1,Subsample,Pre-incubation sediment,Dry ,Day_2,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP1B_SIR-2,Subsample,Pre-incubation sediment,Dry ,Day_2,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1B_SIR-3,Subsample,Pre-incubation sediment,Dry ,Day_2,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1B_SIR-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP1B_SIR-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1B_SIR-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1B_SIR-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1B_SIR-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1C_SIR-1,Subsample,Pre-incubation sediment,Dry ,Day_3,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP1C_SIR-2,Subsample,Pre-incubation sediment,Dry ,Day_3,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP1C_SIR-3,Subsample,Pre-incubation sediment,Dry ,Day_3,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1C_SIR-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),4
+YEP1C_SIR-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),5
+YEP1C_SIR-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),4
+YEP1C_SIR-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),5
+YEP1C_SIR-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),4
+YEP1C_SIR-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),5
+YEP2_SIR-1,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP2_SIR-2,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP2_SIR-3,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP2A_SIR-1,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP2A_SIR-2,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP2A_SIR-3,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP2A_SIR-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP2A_SIR-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP2A_SIR-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP2A_SIR-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP2A_SIR-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP2A_SIR-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP2B_SIR-1,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP2B_SIR-2,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP2B_SIR-3,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP2B_SIR-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP2B_SIR-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP2B_SIR-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP2C_SIR-1,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP2C_SIR-2,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP2C_SIR-3,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP2C_SIR-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),4
+YEP2C_SIR-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),5
+YEP2C_SIR-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),4
+YEP2C_SIR-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),5
+YEP2C_SIR-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),4
+YEP2C_SIR-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),5
+YEP_ICR-HX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP_ICR-HX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP_ICR-HX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP_ICR-SX1,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP_ICR-SX2,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP_ICR-SX3,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP_ICR-UX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),1
+YEP_ICR-UX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),2
+YEP_ICR-UX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Fourier-transform ion cyclotron resonance mass spectrometry (FTICR-MS),3
+YEP1_MOI-1,Subsample,Pre-incubation sediment,Dry,N/A,N/A,Gravimetric moisture content,1
+YEP1_MOI-2,Subsample,Pre-incubation sediment,Dry,N/A,N/A,Gravimetric moisture content,2
+YEP1_MOI-3,Subsample,Pre-incubation sediment,Dry,N/A,N/A,Gravimetric moisture content,3
+YEP2_MOI-1,Subsample,Pre-incubation sediment,Wet,N/A,N/A,Gravimetric moisture content,1
+YEP2_MOI-2,Subsample,Pre-incubation sediment,Wet,N/A,N/A,Gravimetric moisture content,2
+YEP2_MOI-3,Subsample,Pre-incubation sediment,Wet,N/A,N/A,Gravimetric moisture content,3
+YEP_ION-HX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Ions,1
+YEP_ION-HX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Ions,2
+YEP_ION-HX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Ions,3
+YEP_ION-SX1,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Ions,1
+YEP_ION-SX2,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Ions,2
+YEP_ION-SX3,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Ions,3
+YEP_ION-UX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Ions,1
+YEP_ION-UX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Ions,2
+YEP_ION-UX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Ions,3
+YEP_ION-WH1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Ions,1
+YEP_ION-WH2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Ions,2
+YEP_ION-WS1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Ions,1
+YEP_ION-WS2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Ions,2
+YEP_ION-WU1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Ions,1
+YEP_ION-WU2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Ions,2
+YEP_SIN_BLK-1,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Ions,1
+YEP_SIN_BLK-2,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Ions,2
+YEP_SIN-HKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Burned (high severity) Douglas fir leachate,Ions,A
+YEP_SIN-HKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Burned (high severity) Douglas fir leachate,Ions,B
+YEP_SIN-HKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Burned (high severity) Douglas fir leachate,Ions,C
+YEP_SIN-SKA,Subsample,Treatment solution,N/A,Day_1,Columbia River synthetic river water,Ions,A
+YEP_SIN-SKB,Subsample,Treatment solution,N/A,Day_2,Columbia River synthetic river water,Ions,B
+YEP_SIN-SKC,Subsample,Treatment solution,N/A,Day_3,Columbia River synthetic river water,Ions,C
+YEP_SIN-UKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Unburned Douglas fir leachate,Ions,A
+YEP_SIN-UKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Unburned Douglas fir leachate,Ions,B
+YEP_SIN-UKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Unburned Douglas fir leachate,Ions,C
+YEP1_SIN-1,Subsample,Pre-incubation sediment,Dry ,N/A,N/A,Ions,1
+YEP1A_SIN-1,Subsample,Pre-incubation sediment,Dry ,Day_1,N/A,Ions,1
+YEP1A_SIN-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Burned (high severity) Douglas fir leachate,Ions,2
+YEP1A_SIN-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Ions,1
+YEP1A_SIN-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Ions,2
+YEP1A_SIN-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Unburned Douglas fir leachate,Ions,1
+YEP1B_SIN-1,Subsample,Pre-incubation sediment,Dry ,Day_2,N/A,Ions,1
+YEP1B_SIN-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Ions,1
+YEP1B_SIN-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Ions,3
+YEP1B_SIN-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Columbia River synthetic river water,Ions,3
+YEP1B_SIN-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Ions,2
+YEP1B_SIN-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Ions,3
+YEP1C_SIN-1,Subsample,Pre-incubation sediment,Dry ,Day_3,N/A,Ions,1
+YEP1C_SIN-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Ions,4
+YEP1C_SIN-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Ions,5
+YEP1C_SIN-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Ions,4
+YEP1C_SIN-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Ions,5
+YEP1C_SIN-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Ions,4
+YEP1C_SIN-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Ions,5
+YEP2_SIN-1,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Ions,1
+YEP2A_SIN-1,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Ions,1
+YEP2A_SIN-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Ions,1
+YEP2A_SIN-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Ions,2
+YEP2A_SIN-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Ions,1
+YEP2A_SIN-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Ions,2
+YEP2A_SIN-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Ions,1
+YEP2A_SIN-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Ions,2
+YEP2B_SIN-1,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Ions,1
+YEP2B_SIN-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Burned (high severity) Douglas fir leachate,Ions,3
+YEP2B_SIN-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Columbia River synthetic river water,Ions,3
+YEP2B_SIN-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Unburned Douglas fir leachate,Ions,3
+YEP2C_SIN-1,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Ions,1
+YEP2C_SIN-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Ions,4
+YEP2C_SIN-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Ions,5
+YEP2C_SIN-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Ions,4
+YEP2C_SIN-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Ions,5
+YEP2C_SIN-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Ions,4
+YEP2C_SIN-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Ions,5
+YEP_LC_BLK-1,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP_LC_BLK-2,Subsample,Process blank (Milli-Q water) from water extractable organic matter (WEOM) extractions,N/A,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP_LC-HKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),A
+YEP_LC-HKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),B
+YEP_LC-HKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),C
+YEP_LC-HX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP_LC-HX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP_LC-HX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP_LC-SKA,Subsample,Treatment solution,N/A,Day_1,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),A
+YEP_LC-SKB,Subsample,Treatment solution,N/A,Day_2,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),B
+YEP_LC-SKC,Subsample,Treatment solution,N/A,Day_3,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),C
+YEP_LC-SX1,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP_LC-SX2,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP_LC-SX3,Subsample,Treatment solution,N/A,N/A,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP_LC-UKA,Subsample,Diluted leachate treatment solution,N/A,Day_1,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),A
+YEP_LC-UKB,Subsample,Diluted leachate treatment solution,N/A,Day_2,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),B
+YEP_LC-UKC,Subsample,Diluted leachate treatment solution,N/A,Day_3,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),C
+YEP_LC-UX1,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP_LC-UX2,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP_LC-UX3,Subsample,Concentrated leachate treatment solution,N/A,N/A,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP_LC-WH1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP_LC-WH2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP_LC-WS1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP_LC-WS2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP_LC-WU1,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP_LC-WU2,Subsample,Aqueous sample post-incubation (treatment solution only),N/A,Day_2,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1_LC-1,Subsample,Pre-incubation sediment,Dry ,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP1_LC-2,Subsample,Pre-incubation sediment,Dry ,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1_LC-3,Subsample,Pre-incubation sediment,Dry ,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP1A_LC-1,Subsample,Pre-incubation sediment,Dry ,Day_1,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP1A_LC-2,Subsample,Pre-incubation sediment,Dry ,Day_1,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1A_LC-3,Subsample,Pre-incubation sediment,Dry ,Day_1,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP1A_LC-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1A_LC-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP1A_LC-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1A_LC-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_1,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP1B_LC-1,Subsample,Pre-incubation sediment,Dry ,Day_2,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP1B_LC-2,Subsample,Pre-incubation sediment,Dry ,Day_2,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1B_LC-3,Subsample,Pre-incubation sediment,Dry ,Day_2,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP1B_LC-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP1B_LC-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP1B_LC-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP1B_LC-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1B_LC-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_2,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP1C_LC-1,Subsample,Pre-incubation sediment,Dry ,Day_3,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP1C_LC-2,Subsample,Pre-incubation sediment,Dry ,Day_3,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP1C_LC-3,Subsample,Pre-incubation sediment,Dry ,Day_3,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP1C_LC-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),4
+YEP1C_LC-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),5
+YEP1C_LC-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),4
+YEP1C_LC-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),5
+YEP1C_LC-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),4
+YEP1C_LC-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Dry ,Day_3,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),5
+YEP2_LC-1,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP2_LC-2,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP2_LC-3,Subsample,Pre-incubation sediment,Wet ,N/A,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP2A_LC-1,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP2A_LC-2,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP2A_LC-3,Subsample,Pre-incubation sediment,Wet ,Day_1,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP2A_LC-H1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP2A_LC-H2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP2A_LC-S1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP2A_LC-S2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP2A_LC-U1,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP2A_LC-U2,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_1,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP2B_LC-1,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP2B_LC-2,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP2B_LC-3,Subsample,Pre-incubation sediment,Wet ,Day_2,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP2B_LC-H3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP2B_LC-S3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP2B_LC-U3,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_2,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP2C_LC-1,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),1
+YEP2C_LC-2,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),2
+YEP2C_LC-3,Subsample,Pre-incubation sediment,Wet ,Day_3,N/A,Liquid Chromatography-Mass Spectrometry (LC-MS),3
+YEP2C_LC-H4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),4
+YEP2C_LC-H5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Burned (high severity) Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),5
+YEP2C_LC-S4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),4
+YEP2C_LC-S5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Columbia River synthetic river water,Liquid Chromatography-Mass Spectrometry (LC-MS),5
+YEP2C_LC-U4,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),4
+YEP2C_LC-U5,Subsample,Aqueous sample post-incubation (treatment solution and sediment),Wet ,Day_3,Unburned Douglas fir leachate,Liquid Chromatography-Mass Spectrometry (LC-MS),5
+YEP1,Field,Sediment,Dry ,N/A,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A
+YEP1A_BSD,Field,Sediment used for Day 1 incubations,Dry ,Day_1,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A
+YEP1B_BSD,Field,Sediment used for Day 2 incubations,Dry ,Day_2,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A
+YEP1C_BSD,Field,Sediment used for Day 3 incubations,Dry ,Day_3,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A
+YEP2,Field,Sediment,Wet ,N/A,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A
+YEP2A_BSD,Field,Sediment used for Day 1 incubations,Wet ,Day_1,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A
+YEP2B_BSD,Field,Sediment used for Day 2 incubations,Wet ,Day_2,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A
+YEP2C_BSD,Field,Sediment used for Day 3 incubations,Wet ,Day_3,N/A,No analysis; bulk sediment that was subsampled and used in the lab for incubations,N/A

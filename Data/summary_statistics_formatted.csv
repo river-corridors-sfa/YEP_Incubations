@@ -1,7 +1,0 @@
-"Sediment_Type","Treatment","Max O2 Consumption Rate Mean (mg/L/h)","Max O2 Consumption Rate Median (mg/L/h)","Max O2 Consumption Rate SD (mg/L/h)","NPOC Mean (mg/kg dry sediment)","NPOC Median (mg/kg dry sediment)","NPOC SD (mg/kg dry sediment)","CO2 Mean (mol/L)","CO2 Median (mol/L)","CO2 SD (mol/L)","n"
-"Dry","Control (No DOM)",-13.794,-14.09,1.042,299.7,301.49,14.06," 1.01e-04","1.01e-04","1.39e-05",5
-"Dry","High Severity DOM",-15.902,-17.297,2.805,335.09,351.53,25.34," 9.66e-05","9.73e-05","1.58e-05",5
-"Dry","Unburned DOM",-16.443,-16.385,0.929,328.79,316.04,25.99," 1.02e-04","8.05e-05","4.83e-05",5
-"Wet","Control (No DOM)",-27.923,-28.417,2.072,9.7,9.2,2.18,"-2.00e+03","2.65e-04","4.47e+03",5
-"Wet","High Severity DOM",-24.132,-25.565,2.495,24.65,25.5,1.46," 2.37e-04","2.40e-04","1.72e-05",5
-"Wet","Unburned DOM",-28.219,-28.127,1.73,21.61,20.89,3.23," 2.70e-04","2.66e-04","1.25e-05",5

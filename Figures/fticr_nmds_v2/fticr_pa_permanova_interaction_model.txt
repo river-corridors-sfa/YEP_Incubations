@@ -1,0 +1,15 @@
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 9999
+
+adonis2(formula = dist_jaccard ~ Treatment * Moisture + Incubation_Day, data = fticr_sample_info, permutations = permutations, by = "terms")
+                   Df SumOfSqs      R2      F Pr(>F)   
+Treatment           2   0.7079 0.13562 2.2490 0.0034 **
+Moisture            1   0.4892 0.09373 3.1086 0.0017 **
+Incubation_Day      2   0.4364 0.08360 1.3864 0.1049   
+Treatment:Moisture  2   0.4386 0.08402 1.3933 0.1040   
+Residual           20   3.1476 0.60302                 
+Total              27   5.2197 1.00000                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

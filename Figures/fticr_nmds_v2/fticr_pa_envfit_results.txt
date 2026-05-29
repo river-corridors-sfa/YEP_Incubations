@@ -1,0 +1,37 @@
+
+***VECTORS
+
+                                                               NMDS1    NMDS2
+Extractable_NPOC_mg_per_kg                                   0.68888  0.72487
+Extractable_TN_mg_per_kg                                     0.61933  0.78513
+Rate_CO2_moles_per_L_per_hr                                 -1.00000 -0.00044
+Rate_CH4_moles_per_L_per_hr                                  0.18603  0.98254
+Rate_N2O_moles_per_L_per_hr                                  0.17781 -0.98406
+00940_Cl_mg_per_L                                            0.03350 -0.99944
+00945_SO4_mg_per_L_as_SO4                                    0.07793  0.99696
+00618_NO3_mg_per_L_as_N                                      0.75557  0.65507
+00915_Ca_mg_per_L                                            0.33656  0.94166
+00925_Mg_mg_per_L                                            0.29851  0.95441
+00935_K_mg_per_L                                             0.20798  0.97813
+00930_Na_mg_per_L                                            0.08150  0.99667
+Normalized_Respiration_Rate_mg_DO_per_H_per_kg_dry_sediment  0.03376  0.99943
+                                                                r2 Pr(>r)  
+Extractable_NPOC_mg_per_kg                                  0.0743 0.5585  
+Extractable_TN_mg_per_kg                                    0.0517 0.6683  
+Rate_CO2_moles_per_L_per_hr                                 0.1345 0.3215  
+Rate_CH4_moles_per_L_per_hr                                 0.0727 0.3950  
+Rate_N2O_moles_per_L_per_hr                                 0.0749 0.4868  
+00940_Cl_mg_per_L                                           0.0495 0.6789  
+00945_SO4_mg_per_L_as_SO4                                   0.3948 0.0136 *
+00618_NO3_mg_per_L_as_N                                     0.0424 0.7166  
+00915_Ca_mg_per_L                                           0.1902 0.1942  
+00925_Mg_mg_per_L                                           0.1856 0.2032  
+00935_K_mg_per_L                                            0.1719 0.2286  
+00930_Na_mg_per_L                                           0.1141 0.3936  
+Normalized_Respiration_Rate_mg_DO_per_H_per_kg_dry_sediment 0.0769 0.5376  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Permutation: free
+Number of permutations: 9999
+
+9 observations deleted due to missingness

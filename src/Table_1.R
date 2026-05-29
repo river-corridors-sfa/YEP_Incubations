@@ -1,114 +1,140 @@
-# Load required libraries
-library(dplyr)
-library(tidyr)
+rm(list = ls())
 
-# Read in the data files
-respiration <- read.csv("data/segmented_respiration_analysis.csv")
-npoc <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_NPOC_TN.csv", skip = 2) %>%
-  filter(grepl('YEP',Sample_Name))
-co2 <- read.csv("YEP_DP_downloaded_11-18-25/YEP_Sample_Data/YEP_Sediment_CO2.csv", skip = 2) %>%
-  filter(grepl('YEP',Sample_Name))
+library(tidyverse)
 
-# Function to extract sample ID without suffix (INC, SOC, GAS)
-extract_sample_id <- function(sample_name) {
-  # Remove the suffixes _INC-, _SOC-, _GAS-
-  sample_name <- gsub("_INC-", "_", sample_name)
-  sample_name <- gsub("_SOC-", "_", sample_name)
-  sample_name <- gsub("_GAS-", "_", sample_name)
-  return(sample_name)
+# Run from repo root or from src/.
+if (!dir.exists("v2_data") && dir.exists("../v2_data")) {
+  setwd("..")
 }
 
-# Prepare respiration data
-resp_clean <- respiration %>%
-  mutate(Sample_ID = extract_sample_id(Sample_Name)) %>%
-  select(Sample_ID, Rate_break_1 = Rate_mg_L_h_break_1)
+out_dir <- "Tables"
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
-# Prepare NPOC data - CONVERT TO NUMERIC
-npoc_clean <- npoc %>%
-  filter(Material == "Sediment") %>%
-  mutate(
-    Sample_ID = extract_sample_id(Sample_Name),
-    # Convert to numeric, which will turn non-numeric values to NA
-    NPOC_mg_per_kg = as.numeric(Extractable_NPOC_mg_per_kg)
+respiration_path <- file.path(
+  "v2_data", "v2_YEP_Sample_Data",
+  "YEP_Sediment_Incubations_Respiration_Rates.csv"
+)
+npoc_path <- file.path("v2_data", "v2_YEP_Sample_Data", "YEP_Sediment_NPOC_TN.csv")
+gas_path <- file.path("v2_data", "v2_YEP_Sample_Data", "v2_YEP_Sediment_CO2_CH4_N2O.csv")
+ions_path <- file.path("v2_data", "v2_YEP_Sample_Data", "YEP_Sediment_Ions.csv")
+
+read_yep_table <- function(path) {
+  read_csv(
+    path,
+    skip = 2,
+    na = c("", "NA", "N/A"),
+    show_col_types = FALSE,
+    name_repair = "minimal",
+    trim_ws = TRUE
   ) %>%
-  select(Sample_ID, NPOC_mg_per_kg)
+    filter(str_detect(Sample_Name, "^YEP"))
+}
 
-# Prepare CO2 data - CONVERT TO NUMERIC
-co2_clean <- co2 %>%
+to_number <- function(x) {
+  x <- as.character(x)
+  x <- str_replace(x, "^<", "")
+  x[x %in% c("", "NA", "N/A", "-9999")] <- NA_character_
+  suppressWarnings(as.numeric(x))
+}
+
+make_sample_id <- function(sample_name) {
+  sample_name %>%
+    str_replace("_INC-", "_") %>%
+    str_replace("_SOC-", "_") %>%
+    str_replace("_GAS-", "_") %>%
+    str_replace("_SIN-", "_")
+}
+
+respiration <- read_yep_table(respiration_path) %>%
+  filter(str_detect(Sample_Name, "^YEP[12].*_INC-[HSU]")) %>%
+  transmute(
+    Sample_ID = make_sample_id(Sample_Name),
+    Total_O2_Consumption_Rate_mg_h_kg = to_number(
+      Normalized_Respiration_Rate_mg_DO_per_H_per_kg_dry_sediment
+    )
+  )
+
+npoc <- read_yep_table(npoc_path) %>%
+  filter(Material == "Sediment", str_detect(Sample_Name, "^YEP[12].*_SOC-[HSU]")) %>%
+  transmute(
+    Sample_ID = make_sample_id(Sample_Name),
+    DOC_mg_kg = to_number(Extractable_NPOC_mg_per_kg)
+  )
+
+co2 <- read_yep_table(gas_path) %>%
+  filter(Material == "Sediment", str_detect(Sample_Name, "^YEP[12].*_GAS-[HSU]")) %>%
+  transmute(
+    Sample_ID = make_sample_id(Sample_Name),
+    CO2_Production_Rate_mol_L_h = to_number(Rate_CO2_moles_per_L_per_hr)
+  )
+
+nitrate <- read_yep_table(ions_path) %>%
+  filter(str_detect(Sample_Name, "^YEP[12].*_SIN-[HSU]")) %>%
+  transmute(
+    Sample_ID = make_sample_id(Sample_Name),
+    NO3_N_mg_L = to_number(`00618_NO3_mg_per_L_as_N`)
+  )
+
+table_data <- respiration %>%
+  full_join(co2, by = "Sample_ID") %>%
+  full_join(npoc, by = "Sample_ID") %>%
+  full_join(nitrate, by = "Sample_ID") %>%
   mutate(
-    Sample_ID = extract_sample_id(Sample_Name),
-    # Convert to numeric
-    CO2_moles_per_L = as.numeric(Partial_Pressure_CO2_moles_per_L)
-  ) %>%
-  select(Sample_ID, CO2_moles_per_L)
-
-# Merge all data
-merged_data <- resp_clean %>%
-  left_join(npoc_clean, by = "Sample_ID") %>%
-  left_join(co2_clean, by = "Sample_ID")
-
-# Add grouping variables
-merged_data <- merged_data %>%
-  mutate(
-    # Extract site (YEP1 or YEP2)
-    Site = ifelse(grepl("^YEP1", Sample_ID), "YEP1", "YEP2"),
-    
-    # Define sediment type
-    Sediment_Type = ifelse(Site == "YEP1", "Dry", "Wet"),
-    
-    # Extract treatment letter
-    Treatment_Letter = sub(".*_([HUS])\\d+$", "\\1", Sample_ID),
-    
-    # Define treatment name
+    Sediment_Type = case_when(
+      str_detect(Sample_ID, "^YEP1") ~ "Dry",
+      str_detect(Sample_ID, "^YEP2") ~ "Wet",
+      TRUE ~ NA_character_
+    ),
+    Treatment_Letter = str_extract(Sample_ID, "[HSU](?=\\d+$)"),
     Treatment = case_when(
-      Treatment_Letter == "S" ~ "Control (No DOM)",
+      Treatment_Letter == "S" ~ "Control",
       Treatment_Letter == "U" ~ "Unburned DOM",
       Treatment_Letter == "H" ~ "High Severity DOM",
       TRUE ~ NA_character_
-    )
+    ),
+    Sediment_Type = factor(Sediment_Type, levels = c("Dry", "Wet")),
+    Treatment = factor(Treatment, levels = c("Control", "Unburned DOM", "High Severity DOM"))
   ) %>%
-  filter(!is.na(Treatment))  # Remove any samples that don't match treatment pattern
+  filter(!is.na(Sediment_Type), !is.na(Treatment))
 
-# Create summary table with proper column names
-summary_table <- merged_data %>%
+summary_table <- table_data %>%
   group_by(Sediment_Type, Treatment) %>%
   summarise(
-    # Max O2 consumption rate statistics (mg/L/h)
-    `Max O2 Consumption Rate Mean (mg/L/h)` = mean(Rate_break_1, na.rm = TRUE),
-    `Max O2 Consumption Rate Median (mg/L/h)` = median(Rate_break_1, na.rm = TRUE),
-    `Max O2 Consumption Rate SD (mg/L/h)` = sd(Rate_break_1, na.rm = TRUE),
-    
-    # NPOC statistics (mg/kg dry sediment)
-    `NPOC Mean (mg/kg dry sediment)` = mean(NPOC_mg_per_kg, na.rm = TRUE),
-    `NPOC Median (mg/kg dry sediment)` = median(NPOC_mg_per_kg, na.rm = TRUE),
-    `NPOC SD (mg/kg dry sediment)` = sd(NPOC_mg_per_kg, na.rm = TRUE),
-    
-    # CO2 statistics (mol/L)
-    `CO2 Mean (mol/L)` = mean(CO2_moles_per_L, na.rm = TRUE),
-    `CO2 Median (mol/L)` = median(CO2_moles_per_L, na.rm = TRUE),
-    `CO2 SD (mol/L)` = sd(CO2_moles_per_L, na.rm = TRUE),
-    
-    n = n(),
-    .groups = 'drop'  # This removes the grouping warning
+    n_respiration = sum(!is.na(Total_O2_Consumption_Rate_mg_h_kg)),
+    `Mean Total O2 Consumption Rate (mg h-1 kg-1)` =
+      mean(Total_O2_Consumption_Rate_mg_h_kg, na.rm = TRUE),
+    `Median Total O2 Consumption Rate (mg h-1 kg-1)` =
+      median(Total_O2_Consumption_Rate_mg_h_kg, na.rm = TRUE),
+    `SD Total O2 Consumption Rate (mg h-1 kg-1)` =
+      sd(Total_O2_Consumption_Rate_mg_h_kg, na.rm = TRUE),
+    n_co2 = sum(!is.na(CO2_Production_Rate_mol_L_h)),
+    `Mean CO2 production rate (mol L-1 h-1)` =
+      mean(CO2_Production_Rate_mol_L_h, na.rm = TRUE),
+    `Median CO2 production rate (mol L-1 h-1)` =
+      median(CO2_Production_Rate_mol_L_h, na.rm = TRUE),
+    `SD CO2 production rate (mol L-1 h-1)` =
+      sd(CO2_Production_Rate_mol_L_h, na.rm = TRUE),
+    n_doc = sum(!is.na(DOC_mg_kg)),
+    `Mean DOC (mg kg-1)` = mean(DOC_mg_kg, na.rm = TRUE),
+    `Median DOC (mg kg-1)` = median(DOC_mg_kg, na.rm = TRUE),
+    `SD DOC (mg kg-1)` = sd(DOC_mg_kg, na.rm = TRUE),
+    n_no3 = sum(!is.na(NO3_N_mg_L)),
+    `Mean NO3-N (mg L-1)` = mean(NO3_N_mg_L, na.rm = TRUE),
+    `Median NO3-N (mg L-1)` = median(NO3_N_mg_L, na.rm = TRUE),
+    `SD NO3-N (mg L-1)` = sd(NO3_N_mg_L, na.rm = TRUE),
+    .groups = "drop"
   ) %>%
   arrange(Sediment_Type, Treatment)
 
-# Print the table
-print(summary_table)
-
-# Save as CSV for easy pasting into manuscript
-#write.csv(summary_table, "summary_statistics_table.csv", row.names = FALSE)
-
-# Create a formatted version for manuscript (rounded values)
-manuscript_table <- summary_table %>%
+formatted_table <- summary_table %>%
   mutate(
-    across(contains("Max O2"), ~round(.x, 3)),
-    across(contains("NPOC"), ~round(.x, 2)),
-    across(contains("CO2"), ~format(.x, scientific = TRUE, digits = 3))
+    across(matches("^(Mean|Median|SD).*O2"), ~ round(.x, 2)),
+    across(matches("^(Mean|Median|SD).*CO2"), ~ format(.x, scientific = TRUE, digits = 3)),
+    across(matches("^(Mean|Median|SD).*DOC"), ~ round(.x, 2)),
+    across(matches("^(Mean|Median|SD).*NO3"), ~ round(.x, 2))
   )
 
-# Print formatted table
-print(manuscript_table)
+write_csv(summary_table, file.path(out_dir, "Table1_summary_statistics.csv"))
+write_csv(formatted_table, file.path(out_dir, "Table1_summary_statistics_formatted.csv"))
 
-# Save formatted version
-write.csv(manuscript_table, "Data/summary_statistics_formatted.csv", row.names = FALSE)
+print(formatted_table)

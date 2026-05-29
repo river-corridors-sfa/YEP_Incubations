@@ -1,0 +1,31 @@
+Sample_Name,Nitrate_mg_per_L_as_N,Sample_Material,Treatment,Moisture,Incubation_Day,Replicate_Identifier
+YEP1A_SIN-H2,8.08,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Dry,Day_1,2
+YEP1A_SIN-S1,8.46,Aqueous sample post-incubation (treatment solution and sediment),Control,Dry,Day_1,1
+YEP1A_SIN-S2,7.28,Aqueous sample post-incubation (treatment solution and sediment),Control,Dry,Day_1,2
+YEP1A_SIN-U1,8.5,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Dry,Day_1,1
+YEP1B_SIN-H1,8.58,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Dry,Day_2,1
+YEP1B_SIN-H3,9.16,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Dry,Day_2,3
+YEP1B_SIN-S3,9.38,Aqueous sample post-incubation (treatment solution and sediment),Control,Dry,Day_2,3
+YEP1B_SIN-U2,9.2,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Dry,Day_2,2
+YEP1B_SIN-U3,9.84,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Dry,Day_2,3
+YEP1C_SIN-H4,9.2,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Dry,Day_3,4
+YEP1C_SIN-H5,8.76,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Dry,Day_3,5
+YEP1C_SIN-S4,9.7,Aqueous sample post-incubation (treatment solution and sediment),Control,Dry,Day_3,4
+YEP1C_SIN-S5,9.76,Aqueous sample post-incubation (treatment solution and sediment),Control,Dry,Day_3,5
+YEP1C_SIN-U4,9.68,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Dry,Day_3,4
+YEP1C_SIN-U5,10,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Dry,Day_3,5
+YEP2A_SIN-H1,1.1300000000000001,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Wet,Day_1,1
+YEP2A_SIN-H2,1.11,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Wet,Day_1,2
+YEP2A_SIN-S1,1.1900000000000002,Aqueous sample post-incubation (treatment solution and sediment),Control,Wet,Day_1,1
+YEP2A_SIN-S2,1.49,Aqueous sample post-incubation (treatment solution and sediment),Control,Wet,Day_1,2
+YEP2A_SIN-U1,1.1400000000000001,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Wet,Day_1,1
+YEP2A_SIN-U2,1.54,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Wet,Day_1,2
+YEP2B_SIN-H3,1.33,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Wet,Day_2,3
+YEP2B_SIN-S3,1.57,Aqueous sample post-incubation (treatment solution and sediment),Control,Wet,Day_2,3
+YEP2B_SIN-U3,1.37,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Wet,Day_2,3
+YEP2C_SIN-H4,1.4,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Wet,Day_3,4
+YEP2C_SIN-H5,1.35,Aqueous sample post-incubation (treatment solution and sediment),High Burn + DOC,Wet,Day_3,5
+YEP2C_SIN-S4,1.54,Aqueous sample post-incubation (treatment solution and sediment),Control,Wet,Day_3,4
+YEP2C_SIN-S5,1.57,Aqueous sample post-incubation (treatment solution and sediment),Control,Wet,Day_3,5
+YEP2C_SIN-U4,1.57,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Wet,Day_3,4
+YEP2C_SIN-U5,1.56,Aqueous sample post-incubation (treatment solution and sediment),Unburned + DOC,Wet,Day_3,5

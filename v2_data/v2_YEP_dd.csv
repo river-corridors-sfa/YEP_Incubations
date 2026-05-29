@@ -1,0 +1,176 @@
+Column_or_Row_Name,Unit,Definition,Data_Type,Term_Type,Missing_Value_Code,Reported_Precision
+00618_NO3_mg_per_L_as_N,milligrams per liter,"Nitrate reported as nitrogen (rather than as nitrate). 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"". ",numeric,column_header,-9999,0.001
+00915_Ca_mg_per_L,milligrams per liter,"Calcium. 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.001
+00925_Mg_mg_per_L,milligrams per liter,"Magnesium. 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+00930_Na_mg_per_L,milligrams per liter,"Sodium. 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.001
+00935_K_mg_per_L,milligrams per liter,"Potassium. 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.001
+00940_Cl_mg_per_L,milligrams per liter,"Chloride. 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.001
+00945_SO4_mg_per_L_as_SO4,milligrams per liter,"Sulfate reported as sulfate (rather than as sulfur). 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.001
+13C,N/A,Number of 13-Carbon atoms assigned to a peak.,numeric,column_header,-9999,1
+18O,N/A,Number of 18-Oxygen atoms assigned to a peak.,numeric,column_header,-9999,1
+34S,N/A,Number of 34-Sulfur atoms assigned to a peak.,numeric,column_header,-9999,1
+62948_Gravimetric_Moisture_g_per_g,grams per gram,"Gravimetric moisture in sediment samples. 5-digit prefix refers to a US Geological Survey parameter code. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+AI,N/A,"Aromaticity index calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,0.00000001
+AI_Mod,N/A,"Modified aromaticity index calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,0.000000001
+Algal_Mat_Coverage,N/A,Estimated algal mat cover on riverbed. One of the following classes may be selected: full; partial; or no coverage.,text,column_header,N/A,-9999
+Analysis,N/A,Indicates the type of analysis performed on the sample.,text,column_header,N/A,-9999
+Analysis_DetectionLimit,N/A,Analytical detection limit.,numeric,row_header,-9999,0.01
+Analysis_Precision,N/A,Precision of the data values.,numeric,row_header,-9999,0.01
+bs1_class,N/A,"Boundaries used to assign compound classes to molecular formula. Boundary sets 1 are Van Krevelen-based (Kim et al., 2003).",text,column_header,N/A,-9999
+bs2_class,N/A,"Boundaries used to assign compound classes to molecular formula. Boundary sets 2 are Van Krevelen-based (Bailey et al., 2017).",text,column_header,N/A,-9999
+bs3_class,N/A,"Boundaries used to assign compound classes to molecular formula. Boundary sets  3 further integrate stoichiometry to assign modified compound classes (Rivas-Urbach et al., 2018).",text,column_header,N/A,-9999
+C,N/A,Carbon atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Calculated_Mass,mass to charge ratio,Calculated ionic mass for the assigned molecular formula. The units of mass to charge ratio is commonly denoted as m/z.,numeric,column_header,-9999,0.0001
+Calibrated_Mass,mass to charge ratio,Ionic mass of a peak after calibration in CoreMS. The units of mass to charge ratio is commonly denoted as m/z.,numeric,column_header,-9999,0.0001
+Calibration_Order,N/A,"Order of the polynomial function used during calibration in CoreMS (1 = linear, 2 = quadratic).",numeric,column_header,-9999,1
+Calibration_Points,N/A,Number of calibration points used during calibration in CoreMS.,numeric,column_header,-9999,1
+Calibration_RMSE,N/A,Root mean square error (RMSE) of the calibration in CoreMS.,numeric,column_header,-9999,0.00000001
+Calibration_Threshold,N/A,Threshold of acceptable number of calibration points set for the automated calibration function in our CoreMS pipeline.,numeric,column_header,-9999,0.1
+Canopy_Coverage,N/A,Estimated canopy coverage over the sampling location. One of the following classes may be selected: full; partial; or no coverage.,text,column_header,N/A,-9999
+City_or_Township,N/A,City or township.,text,column_header,N/A,-9999
+Collection_Date,YYYY-MM-DD,Date of sample collection.,date,column_header,-9999,-9999
+Collection_Method,N/A,Method of sample collection registered in the System for Earth Sample Registration (SESAR; https://www.geosamples.org/about/services#igsnregistration) system. Controlled vocabulary from SESAR.,text,column_header,N/A,-9999
+Collection_Method_Description,N/A,Description of how sample was collected.,text,column_header,N/A,-9999
+Collector_Chief_Scientist,N/A,Name of person who collected the sample or primary contact.,text,column_header,N/A,-9999
+Column_or_Row_Name,N/A,Column or row headers from each tabular file (csv or tsv) in the dataset.,text,column_header,N/A,-9999
+Column_or_Row_Name_Position,N/A,"The location of the column or row that contains the header names (i.e., column name or row name). The count used to identify the location assumes the numbering begins at 1 (rather than 0) and excludes columns or rows that begin with ""#"". Most data in this data package is oriented in columns, so this field indicates the tabular location of the row that holds the column names (e.g., If row 1 has the column headers, row 2 has the units, and row 3 has the data values, then this value would be 1 - to indicate the location of the column header row).",numeric,column_header,-9999,1
+Comment,N/A,Name of study associated with sample.,text,column_header,N/A,-9999
+Confidence_Score,N/A,"Value (0-1) given by CoreMS to the assigned molecular formula with 1 being the highest confidence (e.g., approximate likelihood of being accurate).",numeric,column_header,-9999,0.0000001
+Country,N/A,Country where sample was collected.,text,column_header,N/A,-9999
+Data_Status,N/A,State of data readiness for publication and use.,text,row_header,N/A,-9999
+Data_Type,N/A,Type of data (numeric; text; date; time; datetime).,text,column_header,N/A,-9999
+Date,YYYY-MM-DD,Date of sample collection.,date,column_header,-9999,-9999
+DateTime,YYYY-MM-DD hh:mm:ss UTC-07:00,Date and time of measurement.,datetime,column_header,-9999,-9999
+DBE,N/A,"Double bond equivalent or degree of unsaturation calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,1
+DBE_1,N/A,"Double bond equivalent or degree of unsaturation calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,1
+DBE_AI,N/A,"The minimum number of C-C double bonds plus rings in a common molecular structure containing heteroatoms. Calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,1
+DBE_O,N/A,"Double bond equivalent minus Oxygen calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,1
+Definition,N/A,Description of the information in a given column or row in the dataset.,text,column_header,N/A,-9999
+delGcox0PerCmol,kJ per C mol,Gibbs free energy of the carbon oxidation half reaction under standard conditions (pH = 0). Calculated as  per LaRowe and Van Cappellen (2011).,numeric,column_header,-9999,0.000001
+delGcoxPerCmol,kJ per C mol,Gibbs free energy of the carbon oxidation half reaction at pH 7. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.00001
+delGd,kJ per Compound mol,Gibbs free energy of the carbon oxidation half reaction per compound mol at pH 7. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.0001
+delGd0,kJ per Compound mol,Gibbs free energy of the carbon oxidation half reaction per compound mol at pH 0. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.1
+DO_Concentration_At_Incubation_Time_Zero,milligrams per liter,Dissolved oxygen measurement taken at time zero which signifies the beginning of the sediment incubation.,numeric,column_header,-9999,0.01
+DO_mg_per_L,milligrams per liter,Dissolved oxygen timestep measurement in incubation reactor.,numeric,column_header,-9999,0.001
+Dominant_Sediment_Type,N/A,Estimated dominant sediment type/size class of streambed. Size/type classes include gravel/cobble (>2mm); sand; silt/mud (<0.0625mm); or bedrock (primarily).,text,column_header,N/A,-9999
+Dry_Sediment_Mass_g,grams,"Sediment dry mass. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.0001
+Dry_Sediment_Mass_MOI_g,grams,"Sediment dry mass from less than 2 millimeter fraction in moisture tins (i.e. the container samples with ""MOI"" are in). Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Elapsed_Seconds,seconds,The number of seconds elapsed in the incubation at the time of each measurement.,numeric,column_header,-9999,0.001
+Error_ppm,parts per million,Parts per million error calculated as [expected molecular mass - measured molecular mass]/expected molecular mass * 1e6).,numeric,column_header,-9999,0.000000001
+Error_Score,N/A,Value (0-1) given by CoreMS to the individual peaks that determines whether the error was acceptable with 1 being acceptable.,numeric,column_header,-9999,0.0000001
+Extractable_NPOC_mg_per_kg,milligrams per kilogram,"Dissolved organic carbon (DOC) measured as non-purgeable organic carbon (NPOC) and reported as carbon in milligrams per kilogram. Samples were normalized to milligrams NPOC per kilogram sediment in the incubation vial using the dry mass of sediment and mass of water in the incubation vial. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Extractable_NPOC_mg_per_L,milligrams per liter,"Dissolved organic carbon (DOC) measured as non-purgeable organic carbon (NPOC) and reported as carbon in milligrams per liter. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Extractable_TN_mg_per_kg,milligrams per kilogram,"Total dissolved nitrogen [nitrate + nitrite + ammonia + organic-N] reported as nitrogen in milligrams per kilogram. Samples were normalized to milligrams TN per kilogram sediment in the incubation vial using the dry mass of sediment and mass of water in the incubation vial. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Extractable_TN_mg_per_L,milligrams per liter,"Total dissolved nitrogen [nitrate + nitrite + ammonia + organic-N] reported as nitrogen in milligrams per liter. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Field_Moist_Sediment_Mass_g,grams,Mass of field moist sediment from less than 2 millimeter fraction.,numeric,column_header,-9999,0.0001
+Field_Moist_Sediment_Mass_MOI_g,grams,"Mass of field moist sediment from less than 2 millimeter fraction in moisture tins (i.e. the container samples with ""MOI"" are in). Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Field_Name,N/A,Name of field of header rows before data.,text,column_header,N/A,-9999
+Field_Name_Informal_Classification,N/A,Informal classification of sample.,text,column_header,N/A,-9999
+Field_Program_Cruise,N/A,Name of field program or cruise registered in the System for Earth Sample Registration (SESAR; https://www.geosamples.org/about/services#igsnregistration) system.,text,column_header,N/A,-9999
+Field_Staff,N/A,The name of field staff involved in data collection.,text,column_header,N/A,-9999
+File_Description,N/A,A brief description of the files in the data package.,text,column_header,N/A,-9999
+File_Name,N/A,Name of files in the data package.,text,column_header,N/A,-9999
+File_Path,N/A,File path within the data package.,text,column_header,N/A,-9999
+Firesting_Serial_Number,N/A,Serial number of the firesting used to measure dissolved oxygen and temperature in the incubation reactor.,text,column_header,N/A,-9999
+FTICR-MS,N/A,"Methods information and data from Fourier transform ion cyclotron resonance mass spectrometry (FTICR-MS). Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",text,column_header,N/A,-9999
+GFE,kJ per C mol,Gibbs free energy of the carbon oxidation half reaction under standard conditions. Calculated as per LaRowe and Van Cappellen (2011).,numeric,column_header,-9999,0.000001
+GPS_Accuracy_ft,feet,Accuracy of the GPS measurements.,numeric,column_header,-9999,1
+H,N/A,Hydrogen atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Header_Rows,N/A,"The number of rows or the number of columns that occur before the start of tabular data. This count assumes the numbering begins at 1 (rather than 0), excludes columns or rows that begin with ""#"", and includes the column or row that the header names are on. For example, if the file has columns with variable names but does not have any other metadata header rows, then this value is 1. Most data in this data package is oriented in columns, so this field indicates the number of rows before the start of the data (e.g., If row 1 has the column headers, row 2 has the units, and row 3 has the data values, then this value would be 2 - to indicate the count of the rows prior to the data values).",numeric,column_header,-9999,1
+Heteroatom_Class,N/A,"The type of heteroatoms (e.g., oxygen, nitrogen, sulfur, phosphorous) in a formula.",text,column_header,N/A,-9999
+HtoC_ratio,N/A,Hydrogen to carbon ratio.,numeric,column_header,-9999,0.0000001
+IGSN,N/A,International Generic Sample Numbers (IGSNs) registered with System for Earth Sample Registration (SESAR; https://www.geosamples.org/about/services#igsnregistration).,text,column_header,N/A,-9999
+Incubation_Day,N/A,Day of the incubation. The incubations were carried out across three days.,text,column_header,N/A,-9999
+Index,N/A,Index of peak.,numeric,column_header,-9999,1
+Ion_Charge,N/A,Charge of the ion. This value is -1 for all  samples because we run our samples using electrospray ionization in the negative mode.,numeric,column_header,-9999,1
+Ion_Type,N/A,"Indicates whether a formula was assigned from a given ionization category. This is always ""de-protonated"" because we run our samples using electrospray ionization in the negative mode.",text,column_header,N/A,-9999
+Is_Isotopologue,N/A,Indicates whether a formula contains different isotopes of the same atom with 0 indicating it is not an isotopologue and 1 indicating that it is an isotopologue.,numeric,column_header,-9999,1
+Isotopologue_Similarity,N/A,Value (0-1) given by CoreMS to evaluate whether an isotopologue matches the mono-isotopic version of the formula with 1 being the closest match.,numeric,column_header,-9999,0.0000001
+Join_By_Field,N/A,"Field in the specified file that can be used to join with other files. If the join field is Parent_ID or Sample_Name, see the readme for details on sample naming conventions.",text,column_header,N/A,-9999
+kdefect.CH2,N/A,"Kendrick Defect = Nominal Kendrick Mass - Kendrick Mass; Hughey et al., 2001.",numeric,column_header,-9999,0.000000001
+kmass.CH2,N/A,"(IUPACmass)(14/14.01565); where IUPAC mass is based on the 12C atomic mass as exactly 12 Da. Hughey et al., 2001.",numeric,column_header,-9999,0.0001
+lamO2,N/A,Thermodynamic efficiency (defined by lambda) at pH 7. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.000000001
+lamO20,N/A,Thermodynamic efficiency (defined by lambda) at standard state (pH = 0). Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.000000001
+Latitude,decimal degrees WGS84,Geographic location (latitude).,numeric,column_header,-9999,0.00001
+Locality,N/A,Name of field site where sample was collected.,text,column_header,N/A,-9999
+Locality_Description,N/A,Description of the locality.,text,column_header,N/A,-9999
+Longitude,decimal degrees WGS84,Geographic location (longitude).,numeric,column_header,-9999,0.0001
+Macrophyte_Coverage,N/A,Estimated macrophyte cover in the river. One of the following classes may be selected: full; partial; or no coverage.,text,column_header,N/A,-9999
+Mass,mass to charge ratio,Measured ionic mass. The units of mass to charge ration is commonly denoted as m/z.,numeric,column_header,-9999,0.0001
+Material,N/A,Type of sample (e.g. Liquid>aqueous; sediment; etc.). Uses a controlled vocabulary from System for Earth Sample Registration (SESAR; https://www.geosamples.org/about/services#igsnregistration) system.,text,column_header,N/A,-9999
+Method_Description,N/A,Description of method code.,text,column_header,N/A,-9999
+Method_ID,N/A,Alphanumeric ID associated with method code.,text,column_header,N/A,-9999
+Method_Instrument,N/A,Instrument used in method code.,text,column_header,N/A,-9999
+Method_Lab,N/A,Laboratory in which methods were completed.,text,column_header,N/A,-9999
+Method_Name,N/A,Name of method code category.,text,column_header,N/A,-9999
+Method_Type,N/A,Type of method.,text,column_header,N/A,-9999
+MethodID_Analysis,N/A,Method code defining information about analysis of the samples that led to the data presented in the column.,text,row_header,N/A,-9999
+MethodID_DataProcessing,N/A,Method code defining information about data processing that led to the data presented in the column.,text,row_header,N/A,-9999
+MethodID_Inspection,N/A,Method code defining information about inspection of the samples that led to the data presented in the column.,text,row_header,N/A,-9999
+MethodID_Preparation,N/A,Method code defining information about preparation of the samples that led to the data presented in the column.,text,row_header,N/A,-9999
+MethodID_Preservation,N/A,Method code defining information about preservation of the samples that led to the data presented in the column.,text,row_header,N/A,-9999
+MethodID_Storage,N/A,Method code defining information about storage of the samples that led to the data presented in the column.,text,row_header,N/A,-9999
+Methods_Deviation,N/A,Deviations from the methods codes listed in the header rows. If a row has a methods deviation; it indicates that the sample from that row uses the methods indicated in the deviations column when they conflict with the methods written in the header rows above (MethodID_*).,text,column_header,N/A,-9999
+Missing_Value_Code,N/A,"Cells with missing data are represented with a missing value code rather than an empty cell. This column describes which missing value codes were used. In most cases, the missing value code for numeric data is ""-9999"" and for character data is ""N/A"". Some files also use a missing value format specific to when a data value is below the limit of detection or above/below the standard curve. For these cases: a text string is included in the format ""[data type]_*|*_Raw_Not_Corrected|*_Final_Corrected"" in which the asterisks are the denoted individual data values. See the associated methods deviation (DTL_003) description for more details.",text,column_header,N/A,-9999
+Molecular_Formula,N/A,"Molecular Formula. This column is a direct output of CoreMS. ""MolForm"" is the same column.",text,column_header,N/A,-9999
+MolForm,N/A,"Molecular Formula. Same as ""Molecular_Formula"" column but shortened.",text,column_header,N/A,-9999
+Mono_Isotopic_Index,N/A,Reference to the peak index of the mono-isotopic version of an isotopologue.,numeric,column_header,-9999,1
+N,N/A,Nitrogen atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Normalized_Respiration_Rate_mg_DO_per_H_per_kg_dry_sediment,milligrams dissolved oxygen per hour per kilogram dry sediment,"Respiration rate normalized to dry sediment mass. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+NOSC,N/A,Nominal Oxidation State of Carbon calculated as per LaRowe and Van Cappellen (2011).,numeric,column_header,-9999,0.00000001
+Notes,N/A,Free text field to record notes related to the site visit including weather; site disturbance; or other information relevant to the quality of data collected.,text,column_header,N/A,-9999
+NtoC_ratio,N/A,Nitrogen to Carbon ratio.,numeric,column_header,-9999,0.00000001
+NtoP_ratio,N/A,Nitrogen to Phosphorous ratio.,numeric,column_header,-9999,1
+Number_Points_In_Respiration_Regression,N/A,"Number of data points included in the respiration regression. See the file ending in ""Methods_Codes.csv"" for more details.",numeric,column_header,-9999,1
+Number_Points_Removed_Respiration_Regression,N/A,"Number of data points removed from the respiration regression. See the file ending in ""Methods_Codes.csv"" for more details.",numeric,column_header,-9999,1
+O,N/A,Oxygen atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+OtoC_ratio,N/A,Oxygen to carbon ratio.,numeric,column_header,-9999,0.00000001
+P,N/A,Phosphorous atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Parent_ID,N/A,The ID associated with the entire kit of supplies and data used to collect data.,text,column_header,N/A,-9999
+Parent_IGSN,N/A,The International Generic Sample Number (IGSN) for each site ID.,text,column_header,N/A,-9999
+Partial_Pressure_CH4_moles_per_L,moles per liter,"Partial pressure of methane (CH4) from headspace equilibrated gas sample post-incubation. Unit conversion from parts per million to moles per liter is described in the readme and methods header rows. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,1.00E-11
+Partial_Pressure_CH4_ppm,parts per million,"Partial pressure of methane (CH4) from headspace equilibrated gas sample post-incubation. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.000001
+Partial_Pressure_CO2_moles_per_L,moles per liter,"Partial pressure of carbon dioxide (CO2) from headspace equilibrated gas sample post-incubation. Unit conversion from parts per million to moles per liter is described in the readme and methods header rows. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.000000001
+Partial_Pressure_CO2_ppm,parts per million,"Partial pressure of carbon dioxide (CO2) from headspace equilibrated gas sample post-incubation. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.001
+Partial_Pressure_N2O_moles_per_L,moles per liter,"Partial pressure of nitrous oxide (N2O from headspace equilibrated gas sample post-incubation. Unit conversion from parts per million to moles per liter is described in the readme and methods header rows. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,1.00E-11
+Partial_Pressure_N2O_ppm,parts per million,"Partial pressure of nitrous oxide (N2O) from headspace equilibrated gas sample post-incubation. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.0000001
+Peak_Area,N/A,Area underneath an assigned peak. We do not calculate this so it is -9999 (missing value used for numeric columns).,numeric,column_header,-9999,-9999
+Peak_Height,N/A,"Equivalent to peak intensity (e.g., how big is a peak).",numeric,column_header,-9999,1
+Physiographic_Feature_Name,N/A,Name of the physiographic feature (stream).,text,column_header,N/A,-9999
+Primary_Physiographic_Feature,N/A,Type of physical feature that sample was collected from using suggested vocabulary from System for Earth Sample Registration (SESAR; https://www.geosamples.org/about/services#igsnregistration) system. Controlled vocabulary from SESAR.,text,column_header,N/A,-9999
+PtoC_ratio,N/A,Phosphorus to Carbon ratio.,numeric,column_header,-9999,0.00000001
+Rate_CH4_moles_per_L_per_hr,moles per liter per hour,"Production rate of methane (CH4) caclulated from headspace equilibrated gas sample post-incubation. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,1.00E-12
+Rate_CO2_moles_per_L_per_hr,moles per liter per hour,"Production rate of carbon dioxide (CO2) caclulated from headspace equilibrated gas sample post-incubation. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.000000001
+Rate_N2O_moles_per_L_per_hr,moles per liter per hour,"Production rate of nitrous oxide (N2O) caclulated from headspace equilibrated gas sample post-incubation. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,1.00E-13
+Related_URL,N/A,Related URL associated with the samples.,text,column_header,N/A,-9999
+Related_URL_Type,N/A,Type of URL associated with the samples.,text,column_header,N/A,-9999
+Replicate_Identifier,N/A,Indicates the replicate number or letter of the sample.,text,column_header,N/A,-9999
+Reported_Precision,N/A,"Precision of the reported data values. For example, if the values are rounded to 1 decimal place, the precision would be 0.1. Similarly, if a value like 5.24 is reported (rounded to 2 decimal places), its precision would be 0.01.",numeric,column_header,-9999,-9999
+Resolving_Power,N/A,Value which describes the instruments capability to distinguish a peak from a different peak given similar mass-to-charge ratios.,numeric,column_header,-9999,0.1
+Respiration_p_value,N/A,"P value of respiration regression. Methods information is embedded in first few rows of respective data file with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",text,column_header,N/A,-9999
+Respiration_R_Squared,milligrams per liter per hour,R-squared of respiration regression.,text,column_header,N/A,-9999
+Respiration_R_Squared_Adj,milligrams per liter per hour,Adjusted R-squared of respiration regression.,text,column_header,N/A,-9999
+Respiration_Rate_mg_DO_per_L_per_H,milligrams per liter per hour,Respiration rate. The slope of the linear regression with time on the x-axis and dissolved oxygen on the y-axis. ,numeric,column_header,-9999,0.01
+S,N/A,Sulphur atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+S_N,N/A,Signal-to-noise ratio.,numeric,column_header,-9999,0.01
+Sample_Material,N/A,Indicates the material of the sample.,text,column_header,N/A,-9999
+Sample_Name,N/A,"Name of sample. See ""readme_YEP.pdf"" and ""YEP_Sample_Name_Metadata.csv"" for more details on sample names.",text,column_header,N/A,-9999
+Sample_Type,N/A,"Indicates if the sample was collected from the field, the incubation reactor, or a subsample from the incubation.",text,column_header,N/A,-9999
+Sediment_Field_Moisture_Conditions,N/A,Indicates if the source sediment sample was wet or dry.,text,column_header,N/A,-9999
+Standard,N/A,ESS-DIVE Reporting Format (https://ess-dive.lbl.gov/data-reporting-formats/) or other standard applied to the data file.,text,column_header,N/A,-9999
+State_or_Province,N/A,State or province where sample was collected.,text,column_header,N/A,-9999
+Temperature_degreesC,degrees Celsius,Timestep temperature of each measurement during incubation.,numeric,column_header,-9999,0.001
+Term_Type,N/A,"Indicates how the term is used in the data package (e.g., a column_header, row_header, data_flag, or other variable).",text,column_header,N/A,-9999
+Time_Arriving,hh:mm UTC-08:00,Site arrival time. Recorded in Pacific Standard Time.,time,column_header,-9999,-9999
+Time_Leaving,hh:mm UTC-08:00,Site departure time. Recorded in Pacific Standard Time.,time,column_header,-9999,-9999
+Total_Incubation_Time_min,minutes,"Total laboratory sediment incubation time used to calculate rates. For respiration, this reflects only the subset of the incubation included in the regression analysis; for gas production, the full incubation period was used. Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Treatment,N/A,Indicates the treatment applied to the sample.,text,column_header,N/A,-9999
+Unit,N/A,Unit of measurement that applies to a given column or row in the data package.,text,row_header; column_header,N/A,-9999
+Unit_Basis,N/A,Basis of the units listed in the column.,text,row_header,N/A,-9999
+Vegetation,N/A,General type of vegetation present in the riparian corridor. Up to two of the following types may be selected if mixed: need leaf evergreen tree; need leaf deciduous tree; broadleaf evergreen tree; broadleaf deciduous tree; shrub; grass; crop; and/or not vegetated.,text,column_header,N/A,-9999
+Water_Mass_g,grams,Water mass.,numeric,column_header,-9999,0.0001
+Water_Mass_MOI_g,grams,"Water mass in moisture tins (i.e. the container samples with ""MOI"" are in). Methods information is embedded in first few rows with methods codes that are defined in the file that ends in ""Methods_Codes.csv"".",numeric,column_header,-9999,0.01
+Water_Status,N/A,"Indicates the status of the water during sediment sampling.  One of the following classes may be selected: wet and flowing, wet and pooled, saturated (wet, no water on surface), damp wet but not saturated), and dry.",text,column_header,N/A,-9999
+Weather,N/A,Weather conditions (sunny; partly cloudy; overcast; raining; other) during sample collection.,text,column_header,N/A,-9999
+Wet_Sediment_Volume_mL,milliliters,Volume of wet sediment from less than 2 millimeter fraction.,numeric,column_header,-9999,1
+YEP*,N/A,Sample name with rows representing peak intensities reflected as presence absence.,numeric,column_header,-9999,1

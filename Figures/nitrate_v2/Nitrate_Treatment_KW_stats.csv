@@ -1,0 +1,3 @@
+Moisture,.y.,n,statistic,df,p,method,kw_label,kw_sig
+Dry,Nitrate_mg_per_L_as_N,15,2.9001788908765613,2,0.235,Kruskal-Wallis,KW p = 0.235,FALSE
+Wet,Nitrate_mg_per_L_as_N,15,5.029909909909916,2,0.0809,Kruskal-Wallis,KW p = 0.081,FALSE
