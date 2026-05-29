@@ -1,5 +1,6 @@
 # ================================
-# FTICR-MS presence/absence NMDS, PERMANOVA, and envfit
+# FTICR-MS presence/absence NMDS, PERMANOVA, follow-up PERMANOVA,
+# PERMDISP, and envfit
 # YEP v2 data package
 # ================================
 
@@ -35,7 +36,6 @@ permutations <- 9999
 envfit_alpha <- 0.05
 label_points <- FALSE
 
-
 fticr_data_path <- file.path(
   "v2_data", "v2_YEP_Sample_Data", "FTICR",
   "YEP_Sediment_CoreMS_Processed_ICR_Data.csv"
@@ -47,7 +47,7 @@ gas_path <- file.path("v2_data", "v2_YEP_Sample_Data", "v2_YEP_Sediment_CO2_CH4_
 ions_path <- file.path("v2_data", "v2_YEP_Sample_Data", "YEP_Sediment_Ions.csv")
 resp_path <- file.path("v2_data", "v2_YEP_Sample_Data", "YEP_Sediment_Incubations_Respiration_Rates.csv")
 
-#  envfit vectors.
+# Envfit vectors.
 env_var_groups <- list(
   npoc_tn = c(
     "Extractable_NPOC_mg_per_kg",
@@ -131,7 +131,7 @@ read_yep_table <- function(path) {
 make_join_key <- function(treatment, moisture, day, replicate) {
   good_key <- !is.na(treatment) & !is.na(moisture) &
     !is.na(day) & !is.na(replicate)
-
+  
   if_else(
     good_key,
     paste(treatment, moisture, day, replicate, sep = "|"),
@@ -154,6 +154,7 @@ pretty_env_name <- function(x) {
     "00925_Mg_mg_per_L" = "Mg",
     "00935_K_mg_per_L" = "K",
     "00930_Na_mg_per_L" = "Na",
+    "Normalized_Respiration_Rate_mg_DO_per_H_per_kg_dry_sediment" = "DO respiration",
     "Respiration_Rate_mg_DO_per_L_per_H" = "DO respiration",
     "DO_Concentration_At_Incubation_Time_Zero" = "Initial DO",
     .default = x
@@ -163,12 +164,12 @@ pretty_env_name <- function(x) {
 prepare_env_table <- function(path, vars, sample_design) {
   dat <- read_yep_table(path)
   vars_present <- intersect(vars, names(dat))
-
+  
   if (length(vars_present) == 0) {
     warning("No requested envfit variables found in ", path)
     return(tibble(join_key = character()))
   }
-
+  
   missing_vars <- setdiff(vars, names(dat))
   if (length(missing_vars) > 0) {
     warning(
@@ -176,13 +177,20 @@ prepare_env_table <- function(path, vars, sample_design) {
       paste(missing_vars, collapse = ", ")
     )
   }
-
+  
   dat %>%
     select(Sample_Name, all_of(vars_present)) %>%
     mutate(across(all_of(vars_present), to_number)) %>%
     left_join(
       sample_design %>%
-        select(Sample_Name, Treatment, Moisture, Incubation_Day, Replicate_Identifier, join_key),
+        select(
+          Sample_Name,
+          Treatment,
+          Moisture,
+          Incubation_Day,
+          Replicate_Identifier,
+          join_key
+        ),
       by = "Sample_Name"
     ) %>%
     filter(!is.na(join_key)) %>%
@@ -194,7 +202,12 @@ save_adonis <- function(model, path) {
   write_lines(capture.output(print(model)), path)
 }
 
+save_text_output <- function(object, path) {
+  write_lines(capture.output(print(object)), path)
+}
+
 target_sample_material <- "Aqueous sample post-incubation (treatment solution and sediment)"
+
 # ----------------
 # Sample metadata
 # ----------------
@@ -226,7 +239,6 @@ fticr_raw <- read_csv(
   trim_ws = TRUE
 )
 
-# the next line on the script is where we decide which samples to include in the NMDS based on the sample metadata and the presence of non-NA values in the FTICR data. We also convert the FTICR data to numeric and create a presence/absence matrix for the NMDS analysis.
 sample_cols <- setdiff(names(fticr_raw), "Calibrated_Mass")
 
 fticr_numeric <- fticr_raw %>%
@@ -254,7 +266,13 @@ pa <- pa[rowSums(pa) > 0, , drop = FALSE]
 
 fticr_sample_info <- fticr_sample_info %>%
   filter(Sample_Name %in% rownames(pa)) %>%
-  arrange(match(Sample_Name, rownames(pa)))
+  arrange(match(Sample_Name, rownames(pa))) %>%
+  mutate(
+    Treatment = droplevels(Treatment),
+    Moisture = droplevels(Moisture),
+    Incubation_Day = droplevels(Incubation_Day),
+    Treatment_Moisture = interaction(Treatment, Moisture, drop = TRUE)
+  )
 
 stopifnot(identical(fticr_sample_info$Sample_Name, rownames(pa)))
 
@@ -267,7 +285,7 @@ cat("NMDS sample count:", nrow(pa), "\n")
 cat("Presence/absence molecule count:", ncol(pa), "\n")
 
 # ----------------
-# NMDS and PERMANOVA
+# NMDS, PERMANOVA, follow-up PERMANOVA, and PERMDISP
 # ----------------
 dist_jaccard <- vegdist(pa, method = "jaccard", binary = TRUE)
 
@@ -286,14 +304,17 @@ site_scores <- scores(nmds, display = "sites") %>%
   rownames_to_column("Sample_Name") %>%
   left_join(fticr_sample_info, by = "Sample_Name")
 
-set.seed(123)
-permanova_main <- adonis2(
-  dist_jaccard ~ Treatment + Moisture + Incubation_Day,
-  data = fticr_sample_info,
-  permutations = permutations,
-  by = "margin"
+write_csv(
+  site_scores,
+  file.path(out_dir, "fticr_pa_nmds_site_scores.csv")
 )
 
+# ----------------
+# Full-experiment PERMANOVA
+# ----------------
+
+# Primary model: full factorial design.
+# This tests whether Treatment, Moisture, and Treatment x Moisture explain DOM composition.
 set.seed(123)
 permanova_interaction <- adonis2(
   dist_jaccard ~ Treatment * Moisture + Incubation_Day,
@@ -302,33 +323,215 @@ permanova_interaction <- adonis2(
   by = "terms"
 )
 
-save_adonis(
-  permanova_main,
-  file.path(out_dir, "fticr_pa_permanova_main_effects.txt")
+# Marginal main-effects model.
+# This gives clean overall tests for Treatment, Moisture, and Incubation_Day.
+set.seed(123)
+permanova_main <- adonis2(
+  dist_jaccard ~ Treatment + Moisture + Incubation_Day,
+  data = fticr_sample_info,
+  permutations = permutations,
+  by = "margin"
 )
+
 save_adonis(
   permanova_interaction,
   file.path(out_dir, "fticr_pa_permanova_interaction_model.txt")
 )
 
-write_csv(
-  as.data.frame(permanova_main) %>% rownames_to_column("Term"),
-  file.path(out_dir, "fticr_pa_permanova_main_effects.csv")
+save_adonis(
+  permanova_main,
+  file.path(out_dir, "fticr_pa_permanova_main_effects.txt")
 )
+
 write_csv(
-  as.data.frame(permanova_interaction) %>% rownames_to_column("Term"),
+  as.data.frame(permanova_interaction) %>%
+    rownames_to_column("Term"),
   file.path(out_dir, "fticr_pa_permanova_interaction_model.csv")
 )
 
-permanova_tab <- as.data.frame(permanova_main)
-label_main <- paste0(
-  "Stress = ", round(nmds$stress, 3),
-  "\nTreatment: R2 = ", round(permanova_tab["Treatment", "R2"], 3),
-  ", p ", fmt_p(permanova_tab["Treatment", "Pr(>F)"]),
-  "\nMoisture: R2 = ", round(permanova_tab["Moisture", "R2"], 3),
-  ", p ", fmt_p(permanova_tab["Moisture", "Pr(>F)"])
+write_csv(
+  as.data.frame(permanova_main) %>%
+    rownames_to_column("Term"),
+  file.path(out_dir, "fticr_pa_permanova_main_effects.csv")
 )
 
+# ----------------
+# Follow-up PERMANOVA within each moisture condition
+# ----------------
+# These tests ask whether Treatment affects DOM composition within Dry sediments
+# and within Wet sediments separately.
+# Use these as follow-up tests, not replacements for the full model.
+
+run_within_moisture_permanova <- function(moisture_level) {
+  sample_info_sub <- fticr_sample_info %>%
+    filter(Moisture == moisture_level) %>%
+    droplevels()
+  
+  sample_names_sub <- sample_info_sub$Sample_Name
+  
+  dist_sub <- as.dist(
+    as.matrix(dist_jaccard)[sample_names_sub, sample_names_sub]
+  )
+  
+  set.seed(123)
+  adonis2(
+    dist_sub ~ Treatment + Incubation_Day,
+    data = sample_info_sub,
+    permutations = permutations,
+    by = "margin"
+  )
+}
+
+permanova_dry <- run_within_moisture_permanova("Dry")
+permanova_wet <- run_within_moisture_permanova("Wet")
+
+save_adonis(
+  permanova_dry,
+  file.path(out_dir, "fticr_pa_permanova_dry_only.txt")
+)
+
+save_adonis(
+  permanova_wet,
+  file.path(out_dir, "fticr_pa_permanova_wet_only.txt")
+)
+
+write_csv(
+  as.data.frame(permanova_dry) %>%
+    rownames_to_column("Term"),
+  file.path(out_dir, "fticr_pa_permanova_dry_only.csv")
+)
+
+write_csv(
+  as.data.frame(permanova_wet) %>%
+    rownames_to_column("Term"),
+  file.path(out_dir, "fticr_pa_permanova_wet_only.csv")
+)
+
+# ----------------
+# Optional pairwise treatment PERMANOVA within Dry and Wet
+# ----------------
+# These tests identify which treatment pairs differ within each moisture condition.
+# Interpret as follow-up tests and use adjusted p-values.
+
+run_pairwise_treatment_permanova <- function(moisture_level) {
+  sample_info_sub <- fticr_sample_info %>%
+    filter(Moisture == moisture_level) %>%
+    droplevels()
+  
+  treatment_pairs <- combn(levels(sample_info_sub$Treatment), 2, simplify = FALSE)
+  
+  map_dfr(treatment_pairs, function(pair) {
+    pair_info <- sample_info_sub %>%
+      filter(Treatment %in% pair) %>%
+      droplevels()
+    
+    pair_names <- pair_info$Sample_Name
+    
+    pair_dist <- as.dist(
+      as.matrix(dist_jaccard)[pair_names, pair_names]
+    )
+    
+    set.seed(123)
+    pair_model <- adonis2(
+      pair_dist ~ Treatment + Incubation_Day,
+      data = pair_info,
+      permutations = permutations,
+      by = "margin"
+    )
+    
+    pair_tab <- as.data.frame(pair_model) %>%
+      rownames_to_column("Term")
+    
+    pair_tab %>%
+      mutate(
+        Moisture = moisture_level,
+        Contrast = paste(pair, collapse = " vs "),
+        .before = Term
+      )
+  })
+}
+
+pairwise_permanova <- bind_rows(
+  run_pairwise_treatment_permanova("Dry"),
+  run_pairwise_treatment_permanova("Wet")
+) %>%
+  group_by(Moisture, Term) %>%
+  mutate(p_adj_BH = p.adjust(`Pr(>F)`, method = "BH")) %>%
+  ungroup()
+
+write_csv(
+  pairwise_permanova,
+  file.path(out_dir, "fticr_pa_pairwise_treatment_permanova_by_moisture.csv")
+)
+
+# ----------------
+# PERMDISP tests
+# ----------------
+# These test whether group differences may reflect differences in dispersion
+# rather than centroid location.
+
+run_permdisp <- function(group_var, file_stub) {
+  group <- fticr_sample_info[[group_var]] %>%
+    droplevels()
+  
+  bd <- betadisper(dist_jaccard, group = group)
+  
+  set.seed(123)
+  bd_test <- permutest(bd, permutations = permutations)
+  
+  write_lines(
+    capture.output(print(bd_test)),
+    file.path(out_dir, paste0(file_stub, ".txt"))
+  )
+  
+  bd_scores <- tibble(
+    Sample_Name = names(bd$distances),
+    Distance_To_Centroid = as.numeric(bd$distances),
+    Group = as.character(group)
+  )
+  
+  write_csv(
+    bd_scores,
+    file.path(out_dir, paste0(file_stub, "_distances_to_centroid.csv"))
+  )
+  
+  invisible(list(model = bd, test = bd_test, scores = bd_scores))
+}
+
+permdisp_treatment <- run_permdisp(
+  "Treatment",
+  "fticr_pa_permdisp_treatment"
+)
+
+permdisp_moisture <- run_permdisp(
+  "Moisture",
+  "fticr_pa_permdisp_moisture"
+)
+
+permdisp_treatment_moisture <- run_permdisp(
+  "Treatment_Moisture",
+  "fticr_pa_permdisp_treatment_moisture"
+)
+
+# ----------------
+# NMDS labels
+# ----------------
+permanova_main_tab <- as.data.frame(permanova_main)
+permanova_interaction_tab <- as.data.frame(permanova_interaction)
+
+label_main <- paste0(
+  "Stress = ", round(nmds$stress, 3),
+  "\nTreatment: R2 = ", round(permanova_main_tab["Treatment", "R2"], 3),
+  ", p ", fmt_p(permanova_main_tab["Treatment", "Pr(>F)"]),
+  "\nMoisture: R2 = ", round(permanova_main_tab["Moisture", "R2"], 3),
+  ", p ", fmt_p(permanova_main_tab["Moisture", "Pr(>F)"]),
+  "\nTreatment x Moisture: p ",
+  fmt_p(permanova_interaction_tab["Treatment:Moisture", "Pr(>F)"])
+)
+
+# ----------------
+# Combined NMDS plot
+# ----------------
 base_nmds_plot <- ggplot(
   site_scores,
   aes(x = NMDS1, y = NMDS2, color = Treatment, shape = Moisture)
@@ -352,7 +555,12 @@ base_nmds_plot <- ggplot(
 
 if (label_points) {
   base_nmds_plot <- base_nmds_plot +
-    geom_text(aes(label = Sample_Name), size = 2.5, vjust = -0.8, check_overlap = TRUE)
+    geom_text(
+      aes(label = Sample_Name),
+      size = 2.5,
+      vjust = -0.8,
+      check_overlap = TRUE
+    )
 }
 
 print(base_nmds_plot)
@@ -364,15 +572,109 @@ ggsave(
   height = 6,
   dpi = 300
 )
+
 ggsave(
   file.path(out_dir, "fticr_pa_nmds_treatment_moisture.pdf"),
   base_nmds_plot,
   width = 8,
   height = 6
 )
+# ----------------
+# Faceted NMDS by moisture with within-panel PERMANOVA text
+# ----------------
+# This uses the same NMDS ordination space as the combined figure.
+# Therefore, there is only one NMDS stress value, shown once as a caption.
 
-write_csv(site_scores, file.path(out_dir, "fticr_pa_nmds_site_scores.csv"))
+dry_tab <- as.data.frame(permanova_dry)
+wet_tab <- as.data.frame(permanova_wet)
 
+dry_treat_r2 <- dry_tab["Treatment", "R2"]
+dry_treat_p <- dry_tab["Treatment", "Pr(>F)"]
+
+wet_treat_r2 <- wet_tab["Treatment", "R2"]
+wet_treat_p <- wet_tab["Treatment", "Pr(>F)"]
+
+x_min <- min(site_scores$NMDS1, na.rm = TRUE)
+x_max <- max(site_scores$NMDS1, na.rm = TRUE)
+y_min <- min(site_scores$NMDS2, na.rm = TRUE)
+y_max <- max(site_scores$NMDS2, na.rm = TRUE)
+
+x_range <- x_max - x_min
+y_range <- y_max - y_min
+
+text_x <- x_min + 0.04 * x_range
+text_y <- y_max - 0.10 * y_range
+
+permanova_text <- tibble(
+  Moisture = factor(c("Dry", "Wet"), levels = levels(site_scores$Moisture)),
+  x = text_x,
+  y = text_y,
+  label = c(
+    paste0(
+      "Treatment PERMANOVA\n",
+      "R² = ",
+      sprintf("%.2f", dry_treat_r2),
+      ", p ",
+      fmt_p(dry_treat_p)
+    ),
+    paste0(
+      "Treatment PERMANOVA\n",
+      "R² = ",
+      sprintf("%.2f", wet_treat_r2),
+      ", p ",
+      fmt_p(wet_treat_p)
+    )
+  )
+)
+
+nmds_by_moisture_plot <- ggplot(
+  site_scores,
+  aes(x = NMDS1, y = NMDS2, color = Treatment)
+) +
+  geom_point(size = 3.5, alpha = 0.9) +
+  geom_text(
+    data = permanova_text,
+    aes(x = x, y = y, label = label),
+    inherit.aes = FALSE,
+    hjust = 0,
+    vjust = 1,
+    size = 3.4,
+    color = "black"
+  ) +
+  facet_wrap(~ Moisture, nrow = 1) +
+  scale_color_manual(values = treatment_colors, drop = FALSE) +
+  labs(
+    x = "NMDS1",
+    y = "NMDS2",
+    color = "Treatment",
+    caption = paste0("NMDS stress = ", sprintf("%.2f", nmds$stress))
+  ) +
+  theme_bw(base_size = 13) +
+  theme(
+    plot.title = element_blank(),
+    plot.subtitle = element_blank(),
+    panel.grid = element_blank(),
+    legend.position = "right",
+    strip.text = element_text(size = 12),
+    plot.caption = element_text(hjust = 1, size = 10)
+  )
+
+print(nmds_by_moisture_plot)
+
+ggsave(
+  file.path(out_dir, "fticr_pa_nmds_by_moisture.png"),
+  nmds_by_moisture_plot,
+  width = 8.5,
+  height = 4.8,
+  dpi = 300
+)
+
+ggsave(
+  file.path(out_dir, "fticr_pa_nmds_by_moisture.pdf"),
+  nmds_by_moisture_plot,
+  width = 8.5,
+  height = 4.8
+)
 # ----------------
 # Envfit variables
 # ----------------
@@ -391,9 +693,11 @@ env_input <- fticr_sample_info %>%
   arrange(match(Sample_Name, rownames(pa)))
 
 env_vars <- setdiff(names(env_input), c("Sample_Name", "join_key"))
+
 env_mat <- env_input %>%
   select(all_of(env_vars)) %>%
   as.data.frame()
+
 rownames(env_mat) <- env_input$Sample_Name
 
 env_vars_keep <- names(env_mat)[
@@ -418,6 +722,7 @@ write_csv(
   env_input,
   file.path(out_dir, "fticr_pa_envfit_input_variables.csv")
 )
+
 write_lines(
   capture.output(print(env_fit)),
   file.path(out_dir, "fticr_pa_envfit_results.txt")
@@ -426,6 +731,7 @@ write_lines(
 env_vectors <- scores(env_fit, display = "vectors") %>%
   as.data.frame() %>%
   rownames_to_column("Variable")
+
 names(env_vectors)[2:3] <- c("NMDS1", "NMDS2")
 
 env_vectors <- env_vectors %>%
@@ -436,7 +742,10 @@ env_vectors <- env_vectors %>%
   ) %>%
   arrange(p_value)
 
-write_csv(env_vectors, file.path(out_dir, "fticr_pa_envfit_vectors.csv"))
+write_csv(
+  env_vectors,
+  file.path(out_dir, "fticr_pa_envfit_vectors.csv")
+)
 
 env_vectors_plot <- env_vectors %>%
   filter(p_value <= envfit_alpha)
@@ -446,7 +755,9 @@ if (nrow(env_vectors_plot) == 0) {
     "No envfit vectors passed p <= ", envfit_alpha,
     ". Plotting the 8 lowest p-value vectors instead."
   )
-  env_vectors_plot <- env_vectors %>% slice_head(n = min(8, n()))
+  
+  env_vectors_plot <- env_vectors %>%
+    slice_head(n = min(8, n()))
 }
 
 arrow_multiplier <- ordiArrowMul(
@@ -495,11 +806,10 @@ ggsave(
   height = 6.5,
   dpi = 300
 )
+
 ggsave(
   file.path(out_dir, "fticr_pa_nmds_envfit.pdf"),
   envfit_plot,
   width = 8.5,
   height = 6.5
 )
-
-cat("Done. Outputs written to:", normalizePath(out_dir, winslash = "/"), "\n")

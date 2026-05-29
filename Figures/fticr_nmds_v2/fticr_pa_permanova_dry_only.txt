@@ -1,0 +1,11 @@
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 9999
+
+adonis2(formula = dist_sub ~ Treatment + Incubation_Day, data = sample_info_sub, permutations = permutations, by = "margin")
+               Df SumOfSqs      R2      F Pr(>F)
+Treatment       2  0.27594 0.13718 0.9352 0.5109
+Incubation_Day  2  0.27122 0.13484 0.9192 0.5109
+Residual       10  1.47531 0.73346              
+Total          14  2.01144 1.00000              
