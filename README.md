@@ -22,10 +22,10 @@ At the top level, the repository is organized into the following main folders:
 The active `src` folder contains:
 
 1. `Plot_fitted_Vmax_kL_DryWet_Wilcox.R`: Generates Figure 1 outputs comparing fitted oxygen consumption parameters between dry and wet sediments.
-2. `Figure2_FTICR_NMDS_inundation_history_panels.R`: Generates Figure 2 FTICR-MS presence/absence NMDS outputs by inundation history.
-3. `Plot_fitted_Vmax_kL_Treatment_KW_Dunn.R`: Generates Figure 3 outputs comparing fitted oxygen consumption parameters across treatments and reporting Kruskal-Wallis and Dunn post hoc results.
+2. `Plot_fitted_Vmax_kL_Treatment_KW_Dunn.R`: Generates Figure 2 outputs comparing fitted oxygen consumption parameters across treatments and reporting Kruskal-Wallis and Dunn post hoc results.
+3. `FTICR_NMDS_inundation_history_panels.R`: Generates Figure 3 FTICR-MS presence/absence NMDS outputs by inundation history.
 4. `Table_S1.R`: Generates Table S1 summary statistics and manuscript-ready table outputs.
-5. 'Model_DO_biotic_abiotic_v2.R': Generates modeling outputs.
+5. `Model_DO_biotic_abiotic_v2.R`: Generates modeling outputs.
 
 ## Manuscript Reference
 
