@@ -1,7 +1,7 @@
 Sediment_Type,Treatment,n_respiration,Mean Total O2 Consumption Rate (mg h-1 kg-1),Median Total O2 Consumption Rate (mg h-1 kg-1),SD Total O2 Consumption Rate (mg h-1 kg-1),n_co2,Mean CO2 production rate (mol L-1 h-1),Median CO2 production rate (mol L-1 h-1),SD CO2 production rate (mol L-1 h-1),n_doc,Mean DOC (mg kg-1),Median DOC (mg kg-1),SD DOC (mg kg-1),n_no3,Mean NO3-N (mg L-1),Median NO3-N (mg L-1),SD NO3-N (mg L-1)
-Dry,Control,5,-41.8,-42.25,3.76,5,0e+00,0e+00,0e+00,5,299.7,301.49,14.06,5,8.92,9.38,1.05
-Dry,Unburned DOM,5,-48.96,-48.75,4.46,5,0e+00,0e+00,0e+00,5,328.79,316.04,25.99,5,9.44,9.68,0.61
-Dry,High Severity DOM,5,-48.89,-52.57,8.29,5,0e+00,0e+00,0e+00,5,335.09,351.53,25.34,5,8.76,8.76,0.46
-Wet,Control,5,-73.4,-74.58,6.44,4,0e+00,0e+00,0e+00,5,9.7,9.2,2.18,5,1.47,1.54,0.16
-Wet,Unburned DOM,5,-73.8,-73.88,4.74,5,0e+00,0e+00,0e+00,5,21.61,20.89,3.23,5,1.44,1.54,0.18
-Wet,High Severity DOM,5,-63.15,-64.1,5.1,5,0e+00,0e+00,0e+00,5,24.65,25.5,1.46,5,1.26,1.33,0.13
+Dry,Control (No DOM),5,-41.8,-42.25,3.76,5,1.59E-04,1.59E-04,5.07E-05,5,299.7,301.49,14.06,5,8.92,9.38,1.05
+Dry,High Severity DOM,5,-48.89,-52.57,8.29,5,1.87E-04,2.02E-04,8.04E-05,5,335.09,351.53,25.34,5,8.76,8.76,0.46
+Dry,Unburned DOM,5,-48.96,-48.75,4.46,5,2.03E-04,1.39E-04,1.19E-04,5,328.79,316.04,25.99,5,9.44,9.68,0.61
+Wet,Control (No DOM),5,-73.4,-74.58,6.44,4,1.02E-03,1.07E-03,5.56E-04,5,9.7,9.2,2.18,5,1.47,1.54,0.16
+Wet,High Severity DOM,5,-63.15,-64.1,5.1,5,6.72E-04,6.59E-04,3.06E-04,5,24.65,25.5,1.46,5,1.26,1.33,0.13
+Wet,Unburned DOM,5,-73.8,-73.88,4.74,5,8.97E-04,1.01E-03,3.42E-04,5,21.61,20.89,3.23,5,1.44,1.54,0.18

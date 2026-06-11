@@ -150,7 +150,11 @@ dunn_brackets <- dunn_stats %>%
   mutate(
     y.position = y_max + (0.15 + 0.13 * (row_number() - 1)) * y_rng,
     y.tip = y.position - 0.04 * y_rng,
-    label = p.adj.signif
+    label = case_when(
+      is.na(p.adj) ~ "p = NA",
+      p.adj < 0.001 ~ "p < 0.001",
+      TRUE ~ sprintf("p = %.3f", p.adj)
+    )
   ) %>%
   ungroup()
 

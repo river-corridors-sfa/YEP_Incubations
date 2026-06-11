@@ -1,0 +1,7 @@
+Sediment Type,Treatment,Mean Vmax (h-1),Median Vmax (h-1),SD Vmax (h-1),Mean kL (h-1),Median kL (h-1),SD kL (h-1)
+Dry,Control (No DOM),12.65,12.46,0.93,0.96,1.08,0.2
+Dry,High Severity DOM,13.58,13.38,1.82,1.27,1.38,0.32
+Dry,Unburned DOM,13.01,12.89,1.02,1.24,1.25,0.13
+Wet,Control (No DOM),20.56,17.26,7.06,3.81,3.77,0.26
+Wet,High Severity DOM,22.74,23.04,8.83,3.05,2.88,0.54
+Wet,Unburned DOM,25.36,27.65,9.86,3.81,3.75,0.49

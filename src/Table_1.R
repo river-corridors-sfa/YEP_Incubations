@@ -17,6 +17,7 @@ respiration_path <- file.path(
 npoc_path <- file.path("v2_data", "v2_YEP_Sample_Data", "YEP_Sediment_NPOC_TN.csv")
 gas_path <- file.path("v2_data", "v2_YEP_Sample_Data", "v2_YEP_Sediment_CO2_CH4_N2O.csv")
 ions_path <- file.path("v2_data", "v2_YEP_Sample_Data", "YEP_Sediment_Ions.csv")
+model_output_path <- "modeling_outputs/YEP_Complete_Analysis_Following_Paper_Enhanced.csv"
 
 read_yep_table <- function(path) {
   read_csv(
@@ -87,13 +88,13 @@ table_data <- respiration %>%
     ),
     Treatment_Letter = str_extract(Sample_ID, "[HSU](?=\\d+$)"),
     Treatment = case_when(
-      Treatment_Letter == "S" ~ "Control",
+      Treatment_Letter == "S" ~ "Control (No DOM)",
       Treatment_Letter == "U" ~ "Unburned DOM",
       Treatment_Letter == "H" ~ "High Severity DOM",
       TRUE ~ NA_character_
     ),
     Sediment_Type = factor(Sediment_Type, levels = c("Dry", "Wet")),
-    Treatment = factor(Treatment, levels = c("Control", "Unburned DOM", "High Severity DOM"))
+    Treatment = factor(Treatment, levels = c("Control (No DOM)", "High Severity DOM", "Unburned DOM"))
   ) %>%
   filter(!is.na(Sediment_Type), !is.na(Treatment))
 
@@ -128,13 +129,131 @@ summary_table <- table_data %>%
 
 formatted_table <- summary_table %>%
   mutate(
-    across(matches("^(Mean|Median|SD).*O2"), ~ round(.x, 2)),
-    across(matches("^(Mean|Median|SD).*CO2"), ~ format(.x, scientific = TRUE, digits = 3)),
+    across(matches("^(Mean|Median|SD).*Total O2"), ~ round(.x, 2)),
+    across(matches("^(Mean|Median|SD).*CO2"), ~ sprintf("%.2E", .x)),
     across(matches("^(Mean|Median|SD).*DOC"), ~ round(.x, 2)),
     across(matches("^(Mean|Median|SD).*NO3"), ~ round(.x, 2))
   )
 
+fitted_rate_data <- read_csv(model_output_path, show_col_types = FALSE) %>%
+  filter(Treatment_Type != "Unknown") %>%
+  mutate(
+    `Sediment Type` = case_when(
+      str_detect(Treatment_Type, "^Dry_") ~ "Dry",
+      str_detect(Treatment_Type, "^Wet_") ~ "Wet",
+      TRUE ~ NA_character_
+    ),
+    Treatment = case_when(
+      str_detect(Treatment_Type, "Control") ~ "Control (No DOM)",
+      str_detect(Treatment_Type, "Unburned") ~ "Unburned DOM",
+      str_detect(Treatment_Type, "HighBurn") ~ "High Severity DOM",
+      TRUE ~ NA_character_
+    ),
+    `Sediment Type` = factor(`Sediment Type`, levels = c("Dry", "Wet")),
+    Treatment = factor(Treatment, levels = c("Control (No DOM)", "High Severity DOM", "Unburned DOM"))
+  ) %>%
+  filter(!is.na(`Sediment Type`), !is.na(Treatment))
+
+fitted_rate_table <- fitted_rate_data %>%
+  group_by(`Sediment Type`, Treatment) %>%
+  summarise(
+    n = sum(!is.na(Combined_Vmax_per_h) & !is.na(Combined_kL_per_h)),
+    `Mean Vmax (h-1)` = mean(Combined_Vmax_per_h, na.rm = TRUE),
+    `Median Vmax (h-1)` = median(Combined_Vmax_per_h, na.rm = TRUE),
+    `SD Vmax (h-1)` = sd(Combined_Vmax_per_h, na.rm = TRUE),
+    `Mean kL (h-1)` = mean(Combined_kL_per_h, na.rm = TRUE),
+    `Median kL (h-1)` = median(Combined_kL_per_h, na.rm = TRUE),
+    `SD kL (h-1)` = sd(Combined_kL_per_h, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(`Sediment Type`, Treatment)
+
+manuscript_table <- fitted_rate_table %>%
+  select(-n) %>%
+  mutate(
+    across(matches("Vmax|kL"), ~ round(.x, 2))
+  )
+
+fitted_rate_dry_wet_table <- fitted_rate_data %>%
+  group_by(`Sediment Type`) %>%
+  summarise(
+    n = sum(!is.na(Combined_Vmax_per_h) & !is.na(Combined_kL_per_h)),
+    `Mean Vmax (h-1)` = mean(Combined_Vmax_per_h, na.rm = TRUE),
+    `Median Vmax (h-1)` = median(Combined_Vmax_per_h, na.rm = TRUE),
+    `SD Vmax (h-1)` = sd(Combined_Vmax_per_h, na.rm = TRUE),
+    `Mean kL (h-1)` = mean(Combined_kL_per_h, na.rm = TRUE),
+    `Median kL (h-1)` = median(Combined_kL_per_h, na.rm = TRUE),
+    `SD kL (h-1)` = sd(Combined_kL_per_h, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(`Sediment Type`)
+
+dry_wet_manuscript_table <- fitted_rate_dry_wet_table %>%
+  select(-n) %>%
+  mutate(
+    across(matches("Vmax|kL"), ~ round(.x, 2))
+  )
+
 write_csv(summary_table, file.path(out_dir, "Table1_summary_statistics.csv"))
 write_csv(formatted_table, file.path(out_dir, "Table1_summary_statistics_formatted.csv"))
+write_csv(fitted_rate_dry_wet_table, file.path(out_dir, "Fitted_Vmax_kL_DryWet_summary_statistics.csv"))
+write_csv(dry_wet_manuscript_table, file.path(out_dir, "Fitted_Vmax_kL_DryWet_manuscript_ready.csv"))
 
-print(formatted_table)
+tryCatch(
+  write_csv(fitted_rate_table, file.path(out_dir, "Fitted_Vmax_kL_summary_statistics.csv")),
+  error = function(e) message("Skipped Fitted_Vmax_kL_summary_statistics.csv because it could not be overwritten: ", e$message)
+)
+tryCatch(
+  write_csv(manuscript_table, file.path(out_dir, "Fitted_Vmax_kL_manuscript_ready.csv")),
+  error = function(e) message("Skipped Fitted_Vmax_kL_manuscript_ready.csv because it could not be overwritten: ", e$message)
+)
+tryCatch(
+  write_csv(manuscript_table, file.path(out_dir, "Table1_manuscript_ready.csv")),
+  error = function(e) message("Skipped Table1_manuscript_ready.csv because it could not be overwritten: ", e$message)
+)
+
+if (requireNamespace("openxlsx", quietly = TRUE)) {
+  workbook <- openxlsx::createWorkbook()
+  openxlsx::addWorksheet(workbook, "By treatment")
+  openxlsx::writeData(workbook, "By treatment", manuscript_table)
+  openxlsx::freezePane(workbook, "By treatment", firstRow = TRUE)
+  openxlsx::setColWidths(workbook, "By treatment", cols = seq_along(manuscript_table), widths = 18)
+  openxlsx::addWorksheet(workbook, "Dry Wet")
+  openxlsx::writeData(workbook, "Dry Wet", dry_wet_manuscript_table)
+  openxlsx::freezePane(workbook, "Dry Wet", firstRow = TRUE)
+  openxlsx::setColWidths(workbook, "Dry Wet", cols = seq_along(dry_wet_manuscript_table), widths = 18)
+  dry_wet_workbook <- openxlsx::createWorkbook()
+  openxlsx::addWorksheet(dry_wet_workbook, "Dry Wet")
+  openxlsx::writeData(dry_wet_workbook, "Dry Wet", dry_wet_manuscript_table)
+  openxlsx::freezePane(dry_wet_workbook, "Dry Wet", firstRow = TRUE)
+  openxlsx::setColWidths(dry_wet_workbook, "Dry Wet", cols = seq_along(dry_wet_manuscript_table), widths = 18)
+  tryCatch(
+    openxlsx::saveWorkbook(
+      dry_wet_workbook,
+      file.path(out_dir, "Fitted_Vmax_kL_DryWet_manuscript_ready.xlsx"),
+      overwrite = TRUE
+    ),
+    error = function(e) message("Skipped Fitted_Vmax_kL_DryWet_manuscript_ready.xlsx because it could not be overwritten: ", e$message)
+  )
+  tryCatch(
+    openxlsx::saveWorkbook(
+      workbook,
+      file.path(out_dir, "Fitted_Vmax_kL_manuscript_ready.xlsx"),
+      overwrite = TRUE
+    ),
+    error = function(e) message("Skipped Fitted_Vmax_kL_manuscript_ready.xlsx because it could not be overwritten: ", e$message)
+  )
+  tryCatch(
+    openxlsx::saveWorkbook(
+      workbook,
+      file.path(out_dir, "Table1_manuscript_ready.xlsx"),
+      overwrite = TRUE
+    ),
+    error = function(e) message("Skipped Table1_manuscript_ready.xlsx because it could not be overwritten: ", e$message)
+  )
+} else {
+  message("Package 'openxlsx' is not installed, so only CSV table outputs were written.")
+}
+
+print(manuscript_table)
+print(dry_wet_manuscript_table)

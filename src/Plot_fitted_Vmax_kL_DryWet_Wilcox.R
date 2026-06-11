@@ -22,6 +22,10 @@ sediment_colors <- c(
 param_order <- c("Vmax", "kL")
 treatment_order <- c("Control", "Unburned + DOC", "High Burn + DOC")
 sediment_order <- c("Dry Sediments", "Wet Sediments")
+parameter_labels <- c(
+  "Vmax" = "Biotic O₂ consumption\nat saturation (Vmax)",
+  "kL" = "Chemical reaction\nrate constant (kL)"
+)
 
 model_fits <- read_csv(model_output_path, show_col_types = FALSE) %>%
   filter(Treatment_Type != "Unknown") %>%
@@ -65,7 +69,7 @@ model_fits <- read_csv(model_output_path, show_col_types = FALSE) %>%
   filter(!is.na(Fitted_Value))
 
 wilcox_stats <- model_fits %>%
-  group_by(Parameter, Treatment) %>%
+  group_by(Parameter) %>%
   summarise(
     n_dry = sum(Sediment_Type == "Dry Sediments"),
     n_wet = sum(Sediment_Type == "Wet Sediments"),
@@ -76,14 +80,11 @@ wilcox_stats <- model_fits %>%
     },
     .groups = "drop"
   ) %>%
-  group_by(Parameter) %>%
-  mutate(p_adj = p.adjust(p, method = "bonferroni")) %>%
-  ungroup() %>%
   mutate(
     p_label = case_when(
-      is.na(p_adj) ~ "Wilcox p = NA",
-      p_adj < 0.001 ~ "Wilcox p < 0.001",
-      TRUE ~ sprintf("Wilcox p = %.3f", p_adj)
+      is.na(p) ~ "Wilcox p = NA",
+      p < 0.001 ~ "Wilcox p < 0.001",
+      TRUE ~ sprintf("Wilcox p = %.3f", p)
     )
   )
 
@@ -93,7 +94,7 @@ write_csv(
 )
 
 label_positions <- model_fits %>%
-  group_by(Parameter, Treatment) %>%
+  group_by(Parameter) %>%
   summarise(
     y_min = min(Fitted_Value, na.rm = TRUE),
     y_max = max(Fitted_Value, na.rm = TRUE),
@@ -107,7 +108,7 @@ label_positions <- model_fits %>%
   )
 
 wilcox_labels <- wilcox_stats %>%
-  left_join(label_positions, by = c("Parameter", "Treatment"))
+  left_join(label_positions, by = "Parameter")
 
 pub_theme <- theme_bw(base_size = 18) +
   theme(
@@ -117,68 +118,10 @@ pub_theme <- theme_bw(base_size = 18) +
     axis.title = element_text(size = 18),
     axis.text = element_text(size = 14, color = "black"),
     strip.background = element_rect(fill = "grey85", color = "grey20"),
-    strip.text = element_text(size = 16),
+    strip.text = element_text(size = 14),
     panel.grid.minor = element_blank(),
     plot.margin = margin(10, 24, 10, 10)
   )
-
-fig_vmax <- model_fits %>%
-  filter(Parameter == "Vmax") %>%
-  ggplot(aes(x = Sediment_Type, y = Fitted_Value, fill = Sediment_Type)) +
-  geom_boxplot(width = 0.7, outlier.shape = NA) +
-  geom_point(position = position_jitter(width = 0.12), alpha = 0.75, size = 2) +
-  geom_blank(
-    data = wilcox_labels %>% filter(Parameter == "Vmax"),
-    aes(x = 1, y = y),
-    inherit.aes = FALSE
-  ) +
-  geom_text(
-    data = wilcox_labels %>% filter(Parameter == "Vmax"),
-    aes(x = x, y = y, label = p_label),
-    inherit.aes = FALSE,
-    hjust = 0,
-    size = 5,
-    fontface = "bold"
-  ) +
-  scale_fill_manual(values = sediment_colors) +
-  scale_x_discrete(labels = c("Dry Sediments" = "Dry\nSediments", "Wet Sediments" = "Wet\nSediments")) +
-  labs(
-    x = NULL,
-    y = expression("Fitted " * V[max] * " (" * h^{-1} * ")"),
-    fill = "Sediment Type"
-  ) +
-  coord_cartesian(clip = "off") +
-  facet_wrap(~Treatment, nrow = 1, scales = "free_y") +
-  pub_theme
-
-fig_kl <- model_fits %>%
-  filter(Parameter == "kL") %>%
-  ggplot(aes(x = Sediment_Type, y = Fitted_Value, fill = Sediment_Type)) +
-  geom_boxplot(width = 0.7, outlier.shape = NA) +
-  geom_point(position = position_jitter(width = 0.12), alpha = 0.75, size = 2) +
-  geom_blank(
-    data = wilcox_labels %>% filter(Parameter == "kL"),
-    aes(x = 1, y = y),
-    inherit.aes = FALSE
-  ) +
-  geom_text(
-    data = wilcox_labels %>% filter(Parameter == "kL"),
-    aes(x = x, y = y, label = p_label),
-    inherit.aes = FALSE,
-    hjust = 0,
-    size = 5,
-    fontface = "bold"
-  ) +
-  scale_fill_manual(values = sediment_colors) +
-  scale_x_discrete(labels = c("Dry Sediments" = "Dry\nSediments", "Wet Sediments" = "Wet\nSediments")) +
-  labs(
-    x = NULL,
-    y = expression("Fitted " * k[L] * " (" * h^{-1} * ")"),
-    fill = "Sediment Type"
-  ) +
-  coord_cartesian(clip = "off") +
-  facet_wrap(~Treatment, nrow = 1, scales = "free_y") +
-  pub_theme
 
 fig_combined <- ggplot(model_fits, aes(x = Sediment_Type, y = Fitted_Value, fill = Sediment_Type)) +
   geom_boxplot(width = 0.7, outlier.shape = NA) +
@@ -200,28 +143,29 @@ fig_combined <- ggplot(model_fits, aes(x = Sediment_Type, y = Fitted_Value, fill
   scale_x_discrete(labels = c("Dry Sediments" = "Dry\nSediments", "Wet Sediments" = "Wet\nSediments")) +
   labs(
     x = NULL,
-    y = expression("Fitted value (" * h^{-1} * ")"),
+    y = expression("Fitted rate constant (" * h^{-1} * ")"),
     fill = "Sediment Type"
   ) +
   coord_cartesian(clip = "off") +
-  facet_grid(Parameter ~ Treatment, scales = "free_y") +
+  facet_wrap(
+    ~Parameter,
+    nrow = 1,
+    scales = "free_y",
+    labeller = labeller(Parameter = parameter_labels)
+  ) +
   pub_theme
-
-print(fig_vmax)
-print(fig_kl)
-print(fig_combined)
 
 ggsave(
   file.path(fig_dir, "Fitted_Vmax_kL_DryWet_Wilcox.png"),
   fig_combined,
-  width = 14,
-  height = 10,
+  width = 8,
+  height = 5,
   dpi = 300
 )
 
 ggsave(
   file.path(fig_dir, "Fitted_Vmax_kL_DryWet_Wilcox.pdf"),
   fig_combined,
-  width = 14,
-  height = 10
+  width = 8,
+  height = 5
 )
