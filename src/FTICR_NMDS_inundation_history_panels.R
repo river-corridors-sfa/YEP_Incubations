@@ -1,5 +1,5 @@
 # ================================
-# Figure 2 FTICR-MS presence/absence NMDS by inundation history
+# FTICR-MS presence/absence NMDS by inundation history
 # ================================
 
 library(tidyverse)
