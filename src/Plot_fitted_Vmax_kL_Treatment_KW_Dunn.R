@@ -3,12 +3,8 @@ rm(list = ls())
 library(tidyverse)
 library(rstatix)
 
-# Run from repo root or from src/.
-if (!dir.exists("modeling_outputs") && dir.exists("../modeling_outputs")) {
-  setwd("..")
-}
 
-model_output_path <- "modeling_outputs/YEP_Complete_Analysis_Following_Paper_Enhanced.csv"
+model_output_path <- "modeling_outputs/YEP_Complete_Modeling_Outputs.csv"
 fig_dir <- "Figures"
 
 if (!dir.exists(fig_dir)) {

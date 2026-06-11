@@ -1,5 +1,5 @@
 # ----------------------------------------
-# Complete YEP Time-to-Anoxia Analysis with Rates in mg/kg/h
+# Complete YEP Analysis with Rates in mg/kg/h
 # ----------------------------------------
 rm(list=ls(all=T))
 library(deSolve)   
@@ -60,7 +60,7 @@ df <- df %>%
   filter(DO_mg_per_L > 0)
 
 # -------------------------------
-# Constants from original paper
+# Constants from Patel et al., 2024
 # -------------------------------
 Km <- 10      # Half-saturation constant (mg/L)
 CB <- 1.0     # Initial microbial biomass (dimensionless)
@@ -702,7 +702,6 @@ create_summary_tables <- function(summary_df) {
   return(list(model_performance = table2))
 }
 
-# Rest of your code remains the same from here...
 # -------------------------------
 # Main analysis execution
 # -------------------------------
@@ -726,7 +725,7 @@ print(head(conversion_factors))
 
 samples <- unique(df2$Sample_Name)
 
-message("\n=== YEP Time-to-Anoxia Analysis (Following Original Paper) ===")
+message("\n=== YEP Analysis  ===")
 message("Samples: ", length(samples))
 message("Output directory: ", out_dir)
 message("Trimming: First and last 2 minutes removed")
@@ -755,22 +754,15 @@ summary_df <- bind_rows(lapply(all_results, function(x) if(!is.null(x)) x$summar
 
 # Save and analyze results
 if(nrow(summary_df) > 0) {
-  enhanced_file <- file.path(out_dir, "YEP_Complete_Analysis_Following_Paper_Enhanced.csv")
-  kg_file <- file.path(out_dir, "YEP_Complete_Analysis_Following_Paper_kg_units.csv")
+  enhanced_file <- file.path(out_dir, "YEP_Complete_Modeling_Outputs.csv")
   
   write.csv(summary_df, enhanced_file, row.names = FALSE)
-  write.csv(summary_df, kg_file, row.names = FALSE)
-  message("\nResults saved: ", enhanced_file)
-  message("Results saved: ", kg_file)
   
   # Create all evaluation plots
   create_evaluation_plots(summary_df)
   
   # Create summary tables for PowerPoint
   tables <- create_summary_tables(summary_df)
-  
-  # Print comprehensive analysis summary
-  message("\n=== YEP ANALYSIS SUMMARY (Following Original Paper) ===")
   
   # Treatment summary
   treatment_results <- summary_df %>%
@@ -813,10 +805,3 @@ if(nrow(summary_df) > 0) {
   message("No successful analyses completed. Check data and sample naming.")
 }
 
-message("\n=== Analysis Complete! ===")
-message("All outputs saved in: ", out_dir, "/")
-message("\nFiles for evaluation:")
-message("- Complete results: YEP_Complete_Analysis_Following_Paper_Enhanced.csv")
-message("- Complete results with kg-unit name: YEP_Complete_Analysis_Following_Paper_kg_units.csv")
-message("- Model performance: Model_Performance_Summary.pdf")
-message("- Model performance table: YEP_Model_Performance_Table.csv")

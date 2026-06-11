@@ -1,4 +1,0 @@
-Treatment,.y.,group1,group2,n1,n2,statistic,p,p.adj,p.adj.signif,p_label
-Control,Nitrate_mg_per_L_as_N,Dry,Wet,5,5,25,0.0119,0.0357,*,Wilcox p = 0.036
-Unburned + DOC,Nitrate_mg_per_L_as_N,Dry,Wet,5,5,25,0.0122,0.0366,*,Wilcox p = 0.037
-High Burn + DOC,Nitrate_mg_per_L_as_N,Dry,Wet,5,5,25,0.0122,0.0366,*,Wilcox p = 0.037
