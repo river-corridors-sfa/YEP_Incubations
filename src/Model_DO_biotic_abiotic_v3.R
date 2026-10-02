@@ -142,6 +142,18 @@ Km_sensitivity_values <- c(
   1.0
 )
 
+# Parameter bounds used during optimization
+# These are also used to flag when the combined model collapses
+# onto one of the simpler component models.
+Vmax_lower_bound <- 0.01
+Vmax_upper_bound <- 50
+kL_lower_bound <- 0.001
+kL_upper_bound <- 10
+
+# Numerical tolerance used only to identify estimates that are
+# effectively sitting on an optimization bound.
+bound_tolerance <- 1e-5
+
 
 # ============================================================
 # Treatment classification
@@ -564,6 +576,51 @@ compute_info <- function(
 
 
 # ============================================================
+# Model diagnostic helper functions
+# ============================================================
+
+calc_rmse <- function(obs, pred) {
+  if(is.null(pred) || length(obs) != length(pred)) {
+    return(NA_real_)
+  }
+  sqrt(mean((obs - pred)^2, na.rm = TRUE))
+}
+
+
+calc_lag1_residual_ac <- function(obs, pred) {
+  if(is.null(pred) || length(obs) != length(pred)) {
+    return(NA_real_)
+  }
+  residuals <- obs - pred
+  residuals <- residuals[is.finite(residuals)]
+  if(length(residuals) < 3 || sd(residuals) == 0) {
+    return(NA_real_)
+  }
+  cor(
+    residuals[-length(residuals)],
+    residuals[-1],
+    use = "complete.obs"
+  )
+}
+
+
+at_lower_bound <- function(value, lower_bound, tolerance = bound_tolerance) {
+  if(length(value) == 0 || is.na(value) || !is.finite(value)) {
+    return(NA)
+  }
+  value <= (lower_bound + tolerance)
+}
+
+
+at_upper_bound <- function(value, upper_bound, tolerance = bound_tolerance) {
+  if(length(value) == 0 || is.na(value) || !is.finite(value)) {
+    return(NA)
+  }
+  value >= (upper_bound - tolerance)
+}
+
+
+# ============================================================
 # Complete model fitting function
 # ============================================================
 
@@ -642,48 +699,23 @@ fit_all_yep_models <- function(
   # ----------------------------------------------------------
   # Sample-specific water and sediment quantities
   # ----------------------------------------------------------
-  
   if(!is.null(conversion_info)) {
     
-    dry_mass_g <-
-      conversion_info$Dry_Sediment_Mass_g
-    
-    water_vol_L <-
-      conversion_info$Water_Volume_L
-    
-    conversion_factor <-
-      conversion_info$Conversion_Factor
-    
+    dry_mass_g <- conversion_info$Dry_Sediment_Mass_g
+    water_vol_L <- conversion_info$Water_Volume_L
+    conversion_factor <- conversion_info$Conversion_Factor
     
   } else {
     
-    # Defaults are only used if sample-specific
-    # mass/volume data are unavailable
+    dry_mass_g <- NA_real_
+    water_vol_L <- NA_real_
+    conversion_factor <- NA_real_
     
-    if(grepl("YEP1", sample_name)) {
-      
-      dry_mass_g <- 10.2
-      water_vol_L <- 0.0304
-      conversion_factor <- 0.0298
-      
-    } else {
-      
-      dry_mass_g <- 14.1
-      water_vol_L <- 0.0366
-      conversion_factor <- 0.0259
-    }
+    message(
+      "No sediment mass/volume normalization for ",
+      sample_name
+    )
   }
-  
-  
-  message(
-    "Fitting ",
-    sample_name,
-    " | Km = ",
-    Km,
-    " mg/L | n = ",
-    n
-  )
-  
   
   # ----------------------------------------------------------
   # Starting parameter estimate
@@ -722,7 +754,7 @@ fit_all_yep_models <- function(
     
     if(
       x[["kL"]] <= 0 ||
-      x[["kL"]] > 10
+      x[["kL"]] > kL_upper_bound
     ) {
       
       return(1e10)
@@ -766,7 +798,7 @@ fit_all_yep_models <- function(
     
     if(
       x[["Vmax"]] <= 0 ||
-      x[["Vmax"]] > 50
+      x[["Vmax"]] > Vmax_upper_bound
     ) {
       
       return(1e10)
@@ -812,9 +844,9 @@ fit_all_yep_models <- function(
     
     if(
       x[["Vmax"]] <= 0 ||
-      x[["Vmax"]] > 50 ||
+      x[["Vmax"]] > Vmax_upper_bound ||
       x[["kL"]] <= 0 ||
-      x[["kL"]] > 10
+      x[["kL"]] > kL_upper_bound
     ) {
       
       return(1e10)
@@ -869,20 +901,20 @@ fit_all_yep_models <- function(
   
   start_kL <-
     max(
-      0.001,
+      kL_lower_bound,
       min(
         start_kL,
-        9
+        kL_upper_bound * 0.9
       )
     )
   
   
   start_Vmax <-
     max(
-      0.01,
+      Vmax_lower_bound,
       min(
         linear_rate_est,
-        45
+        Vmax_upper_bound * 0.9
       )
     )
   
@@ -899,11 +931,11 @@ fit_all_yep_models <- function(
       f = Objective_LIN,
       
       lower = c(
-        kL = 0.001
+        kL = kL_lower_bound
       ),
       
       upper = c(
-        kL = 10
+        kL = kL_upper_bound
       ),
       
       control = list(
@@ -926,11 +958,11 @@ fit_all_yep_models <- function(
       f = Objective_BIO,
       
       lower = c(
-        Vmax = 0.01
+        Vmax = Vmax_lower_bound
       ),
       
       upper = c(
-        Vmax = 50
+        Vmax = Vmax_upper_bound
       ),
       
       control = list(
@@ -949,25 +981,25 @@ fit_all_yep_models <- function(
       p = c(
         Vmax = max(
           start_Vmax / 2,
-          0.01
+          Vmax_lower_bound
         ),
         
         kL = max(
           start_kL / 2,
-          0.001
+          kL_lower_bound
         )
       ),
       
       f = Objective_COM,
       
       lower = c(
-        Vmax = 0.01,
-        kL = 0.001
+        Vmax = Vmax_lower_bound,
+        kL = kL_lower_bound
       ),
       
       upper = c(
-        Vmax = 50,
-        kL = 10
+        Vmax = Vmax_upper_bound,
+        kL = kL_upper_bound
       ),
       
       control = list(
@@ -1037,6 +1069,116 @@ fit_all_yep_models <- function(
       Km = Km
     )
   }
+  
+  
+  # ==========================================================
+  # Model diagnostics
+  # ==========================================================
+  #
+  # AIC below is retained as a descriptive diagnostic only.
+  # The 5-second observations are temporally autocorrelated, so
+  # raw AIC is NOT used by itself to declare a best model.
+  #
+  # RMSE is reported in mg O2/L. Residual lag-1 autocorrelation
+  # describes remaining temporal structure in model residuals;
+  # values closer to zero indicate less serial structure.
+  # ==========================================================
+  
+  Linear_RMSE <- if(!is.null(model_LIN)) {
+    calc_rmse(Data$DO, model_LIN$DO)
+  } else {
+    NA_real_
+  }
+  
+  Biotic_RMSE <- if(!is.null(model_BIO)) {
+    calc_rmse(Data$DO, model_BIO$DO)
+  } else {
+    NA_real_
+  }
+  
+  Combined_RMSE <- if(!is.null(model_COM)) {
+    calc_rmse(Data$DO, model_COM$DO)
+  } else {
+    NA_real_
+  }
+  
+  Linear_Residual_Lag1_AC <- if(!is.null(model_LIN)) {
+    calc_lag1_residual_ac(Data$DO, model_LIN$DO)
+  } else {
+    NA_real_
+  }
+  
+  Biotic_Residual_Lag1_AC <- if(!is.null(model_BIO)) {
+    calc_lag1_residual_ac(Data$DO, model_BIO$DO)
+  } else {
+    NA_real_
+  }
+  
+  Combined_Residual_Lag1_AC <- if(!is.null(model_COM)) {
+    calc_lag1_residual_ac(Data$DO, model_COM$DO)
+  } else {
+    NA_real_
+  }
+  
+  Combined_kL_at_lower_bound <- if(!is.null(fit_COM)) {
+    at_lower_bound(
+      fit_COM$par[["kL"]],
+      kL_lower_bound
+    )
+  } else {
+    NA
+  }
+  
+  Combined_Vmax_at_lower_bound <- if(!is.null(fit_COM)) {
+    at_lower_bound(
+      fit_COM$par[["Vmax"]],
+      Vmax_lower_bound
+    )
+  } else {
+    NA
+  }
+  
+  Combined_kL_at_upper_bound <- if(!is.null(fit_COM)) {
+    at_upper_bound(
+      fit_COM$par[["kL"]],
+      kL_upper_bound
+    )
+  } else {
+    NA
+  }
+  
+  Combined_Vmax_at_upper_bound <- if(!is.null(fit_COM)) {
+    at_upper_bound(
+      fit_COM$par[["Vmax"]],
+      Vmax_upper_bound
+    )
+  } else {
+    NA
+  }
+  
+  Best_Single_RMSE <- suppressWarnings(
+    min(
+      c(Linear_RMSE, Biotic_RMSE),
+      na.rm = TRUE
+    )
+  )
+  
+  if(!is.finite(Best_Single_RMSE)) {
+    Best_Single_RMSE <- NA_real_
+  }
+  
+  Combined_RMSE_Improvement_vs_BestSingle_pct <-
+    if(
+      !is.na(Combined_RMSE) &&
+      !is.na(Best_Single_RMSE) &&
+      Best_Single_RMSE > 0
+    ) {
+      100 *
+        (Best_Single_RMSE - Combined_RMSE) /
+        Best_Single_RMSE
+    } else {
+      NA_real_
+    }
   
   
   # ==========================================================
@@ -1615,6 +1757,12 @@ fit_all_yep_models <- function(
         NA
       ),
     
+    Linear_RMSE_mg_per_L =
+      round(Linear_RMSE, 6),
+    
+    Linear_Residual_Lag1_AC =
+      round(Linear_Residual_Lag1_AC, 6),
+    
     
     # --------------------------------------------------------
     # Biological model
@@ -1683,6 +1831,12 @@ fit_all_yep_models <- function(
         ),
         NA
       ),
+    
+    Biotic_RMSE_mg_per_L =
+      round(Biotic_RMSE, 6),
+    
+    Biotic_Residual_Lag1_AC =
+      round(Biotic_Residual_Lag1_AC, 6),
     
     
     # --------------------------------------------------------
@@ -1799,12 +1953,51 @@ fit_all_yep_models <- function(
         NA
       ),
     
+    Combined_RMSE_mg_per_L =
+      round(Combined_RMSE, 6),
+    
+    Combined_Residual_Lag1_AC =
+      round(Combined_Residual_Lag1_AC, 6),
+    
+    Combined_RMSE_Improvement_vs_BestSingle_pct =
+      round(
+        Combined_RMSE_Improvement_vs_BestSingle_pct,
+        4
+      ),
+    
+    Combined_kL_at_lower_bound =
+      Combined_kL_at_lower_bound,
+    
+    Combined_Vmax_at_lower_bound =
+      Combined_Vmax_at_lower_bound,
+    
+    Combined_kL_at_upper_bound =
+      Combined_kL_at_upper_bound,
+    
+    Combined_Vmax_at_upper_bound =
+      Combined_Vmax_at_upper_bound,
+    
     stringsAsFactors = FALSE
   )
   
   
   # ==========================================================
-  # Best model by AIC
+  # Model interpretation
+  # ==========================================================
+  #
+  # Raw AIC is retained as a diagnostic, but because the DO
+  # measurements occur every 5 seconds and are temporally
+  # autocorrelated, it is not treated as the sole model-selection
+  # criterion.
+  #
+  # Interpretation hierarchy:
+  # 1. If one combined-model parameter is effectively at its lower
+  #    bound, the combined model has collapsed onto the simpler model.
+  # 2. If both combined parameters are away from their bounds,
+  #    support for the combined model requires BOTH lower RMSE and
+  #    lower absolute lag-1 residual autocorrelation than each
+  #    single-component model.
+  # 3. Conflicting diagnostics are flagged for manual review.
   # ==========================================================
   
   aic_values <- c(
@@ -1813,44 +2006,128 @@ fit_all_yep_models <- function(
     summary_row$Combined_AIC
   )
   
-  
   aic_names <- c(
     "FirstOrder",
     "Biotic",
     "Combined"
   )
   
-  
   valid_aic <-
     !is.na(aic_values) &
     is.finite(aic_values)
   
-  
   if(any(valid_aic)) {
-    
-    best_idx <-
-      which.min(
-        aic_values[valid_aic]
+    lowest_aic_idx <- which.min(aic_values[valid_aic])
+    summary_row$Lowest_AIC_Model <-
+      aic_names[valid_aic][lowest_aic_idx]
+    summary_row$Lowest_AIC <-
+      min(aic_values[valid_aic])
+  } else {
+    summary_row$Lowest_AIC_Model <- "None"
+    summary_row$Lowest_AIC <- NA_real_
+  }
+  
+  
+  # Best single-component model by RMSE
+  if(
+    !is.na(Linear_RMSE) &&
+    !is.na(Biotic_RMSE)
+  ) {
+    Best_Single_Model_RMSE <-
+      ifelse(
+        Linear_RMSE <= Biotic_RMSE,
+        "FirstOrder",
+        "Biotic"
       )
+  } else if(!is.na(Linear_RMSE)) {
+    Best_Single_Model_RMSE <- "FirstOrder"
+  } else if(!is.na(Biotic_RMSE)) {
+    Best_Single_Model_RMSE <- "Biotic"
+  } else {
+    Best_Single_Model_RMSE <- "None"
+  }
+  
+  summary_row$Best_Single_Model_RMSE <-
+    Best_Single_Model_RMSE
+  
+  
+  combined_lower_rmse_than_both <-
+    !is.na(Combined_RMSE) &&
+    !is.na(Linear_RMSE) &&
+    !is.na(Biotic_RMSE) &&
+    Combined_RMSE < Linear_RMSE &&
+    Combined_RMSE < Biotic_RMSE
+  
+  combined_lower_abs_ac_than_both <-
+    !is.na(Combined_Residual_Lag1_AC) &&
+    !is.na(Linear_Residual_Lag1_AC) &&
+    !is.na(Biotic_Residual_Lag1_AC) &&
+    abs(Combined_Residual_Lag1_AC) <
+    abs(Linear_Residual_Lag1_AC) &&
+    abs(Combined_Residual_Lag1_AC) <
+    abs(Biotic_Residual_Lag1_AC)
+  
+  summary_row$Combined_Lower_RMSE_Than_Both_Singles <-
+    combined_lower_rmse_than_both
+  
+  summary_row$Combined_Lower_Abs_Lag1_AC_Than_Both_Singles <-
+    combined_lower_abs_ac_than_both
+  
+  
+  if(is.null(fit_COM)) {
     
+    summary_row$Model_Interpretation <-
+      Best_Single_Model_RMSE
     
-    summary_row$Best_Model <-
-      aic_names[valid_aic][best_idx]
+    summary_row$Model_Interpretation_Basis <-
+      "Combined fit failed; selected lower-RMSE single-component model"
     
+  } else if(
+    isTRUE(Combined_kL_at_lower_bound) &&
+    !isTRUE(Combined_Vmax_at_lower_bound)
+  ) {
     
-    summary_row$Best_AIC <-
-      min(
-        aic_values[valid_aic]
-      )
+    summary_row$Model_Interpretation <- "Biotic"
     
+    summary_row$Model_Interpretation_Basis <-
+      "Combined kL is at its lower bound; combined model collapses to biotic model"
+    
+  } else if(
+    isTRUE(Combined_Vmax_at_lower_bound) &&
+    !isTRUE(Combined_kL_at_lower_bound)
+  ) {
+    
+    summary_row$Model_Interpretation <- "FirstOrder"
+    
+    summary_row$Model_Interpretation_Basis <-
+      "Combined Vmax is at its lower bound; combined model collapses to first-order model"
+    
+  } else if(
+    isTRUE(Combined_kL_at_lower_bound) &&
+    isTRUE(Combined_Vmax_at_lower_bound)
+  ) {
+    
+    summary_row$Model_Interpretation <- "ManualReview"
+    
+    summary_row$Model_Interpretation_Basis <-
+      "Both combined-model parameters are at lower bounds"
+    
+  } else if(
+    isTRUE(combined_lower_rmse_than_both) &&
+    isTRUE(combined_lower_abs_ac_than_both)
+  ) {
+    
+    summary_row$Model_Interpretation <- "Combined"
+    
+    summary_row$Model_Interpretation_Basis <-
+      "Both parameters are interior; combined model has lower RMSE and lower absolute lag-1 residual autocorrelation than both single models"
     
   } else {
     
-    summary_row$Best_Model <-
-      "None"
+    summary_row$Model_Interpretation <- "ManualReview"
     
-    summary_row$Best_AIC <-
-      NA
+    summary_row$Model_Interpretation_Basis <-
+      "Combined parameters are interior but RMSE and residual-autocorrelation diagnostics do not both favor the combined model"
   }
   
   
@@ -1900,27 +2177,27 @@ create_evaluation_plots <- function(summary_df) {
   )
   
   
-  ssr_summary <- plot_data %>%
+  rmse_summary <- plot_data %>%
     group_by(
       Treatment_Type
     ) %>%
     summarise(
       
-      FirstOrder_SSR =
+      FirstOrder_RMSE =
         mean(
-          Linear_SSR,
+          Linear_RMSE_mg_per_L,
           na.rm = TRUE
         ),
       
-      Biotic_SSR =
+      Biotic_RMSE =
         mean(
-          Biotic_SSR,
+          Biotic_RMSE_mg_per_L,
           na.rm = TRUE
         ),
       
-      Combined_SSR =
+      Combined_RMSE =
         mean(
-          Combined_SSR,
+          Combined_RMSE_mg_per_L,
           na.rm = TRUE
         ),
       
@@ -1928,24 +2205,24 @@ create_evaluation_plots <- function(summary_df) {
     )
   
   
-  ssr_matrix <- as.matrix(
-    ssr_summary[
+  rmse_matrix <- as.matrix(
+    rmse_summary[
       ,
       c(
-        "FirstOrder_SSR",
-        "Biotic_SSR",
-        "Combined_SSR"
+        "FirstOrder_RMSE",
+        "Biotic_RMSE",
+        "Combined_RMSE"
       )
     ]
   )
   
   
-  rownames(ssr_matrix) <-
-    ssr_summary$Treatment_Type
+  rownames(rmse_matrix) <-
+    rmse_summary$Treatment_Type
   
   
   barplot(
-    t(ssr_matrix),
+    t(rmse_matrix),
     beside = TRUE,
     col = c(
       "lightblue",
@@ -1953,9 +2230,9 @@ create_evaluation_plots <- function(summary_df) {
       "lightgreen"
     ),
     main =
-      "Model Performance by Treatment\nLower SSR = Better Fit",
+      "Model Performance by Treatment\nLower RMSE = Better Fit",
     ylab =
-      "Sum of Squared Residuals",
+      "RMSE (mg O2/L)",
     legend.text = c(
       "First-order",
       "Biotic",
@@ -2203,38 +2480,46 @@ create_summary_tables <- function(summary_df) {
       n = n(),
       
       FirstOrder_SSR =
-        round(
-          mean(
-            Linear_SSR,
-            na.rm = TRUE
-          ),
-          2
-        ),
+        round(mean(Linear_SSR, na.rm = TRUE), 2),
       
       Biotic_SSR =
-        round(
-          mean(
-            Biotic_SSR,
-            na.rm = TRUE
-          ),
-          2
-        ),
+        round(mean(Biotic_SSR, na.rm = TRUE), 2),
       
       Combined_SSR =
-        round(
-          mean(
-            Combined_SSR,
-            na.rm = TRUE
-          ),
-          2
-        ),
+        round(mean(Combined_SSR, na.rm = TRUE), 2),
       
-      Best_Model =
-        names(
-          which.max(
-            table(Best_Model)
-          )
-        ),
+      FirstOrder_RMSE =
+        round(mean(Linear_RMSE_mg_per_L, na.rm = TRUE), 4),
+      
+      Biotic_RMSE =
+        round(mean(Biotic_RMSE_mg_per_L, na.rm = TRUE), 4),
+      
+      Combined_RMSE =
+        round(mean(Combined_RMSE_mg_per_L, na.rm = TRUE), 4),
+      
+      FirstOrder_Mean_Abs_Lag1_AC =
+        round(mean(abs(Linear_Residual_Lag1_AC), na.rm = TRUE), 4),
+      
+      Biotic_Mean_Abs_Lag1_AC =
+        round(mean(abs(Biotic_Residual_Lag1_AC), na.rm = TRUE), 4),
+      
+      Combined_Mean_Abs_Lag1_AC =
+        round(mean(abs(Combined_Residual_Lag1_AC), na.rm = TRUE), 4),
+      
+      Combined_kL_at_lower_bound_n =
+        sum(Combined_kL_at_lower_bound %in% TRUE),
+      
+      Combined_Vmax_at_lower_bound_n =
+        sum(Combined_Vmax_at_lower_bound %in% TRUE),
+      
+      Most_Common_Model_Interpretation = {
+        x <- Model_Interpretation[!is.na(Model_Interpretation)]
+        if(length(x) == 0) {
+          NA_character_
+        } else {
+          names(which.max(table(x)))
+        }
+      },
       
       .groups = "drop"
     )
@@ -2249,10 +2534,7 @@ create_summary_tables <- function(summary_df) {
     row.names = FALSE
   )
   
-  
-  return(
-    table2
-  )
+  return(table2)
 }
 
 
@@ -2375,9 +2657,9 @@ all_results <- lapply(
       conversion_info <- NULL
       
       message(
-        "Warning: no sample-specific mass/volume data for ",
+        "No sediment mass/volume normalization for ",
         sname,
-        "; using default values."
+        "; mass-normalized outputs will be NA."
       )
       
     } else {
@@ -2517,12 +2799,12 @@ if(nrow(summary_df) > 0) {
   
   
   # ----------------------------------------------------------
-  # Overall model preference
+  # Overall model interpretation
   # ----------------------------------------------------------
   
   model_preference <- summary_df %>%
     count(
-      Best_Model,
+      Model_Interpretation,
       sort = TRUE
     ) %>%
     mutate(
@@ -2559,7 +2841,7 @@ if(nrow(summary_df) > 0) {
 # 1.0 mg/L = upper literature-informed scenario
 #
 # Purpose:
-# Determine whether fitted Vmax, kL, model preference,
+# Determine whether fitted Vmax, kL, model interpretation,
 # and treatment patterns depend strongly on fixed Km.
 #
 # Km is NOT selected by choosing the value with lowest AIC.
@@ -2683,6 +2965,7 @@ for(km_test in Km_sensitivity_values) {
     sensitivity_results_list[[as.character(km_test)]] <- sensitivity_summary_km
     
   }
+}
 
 
 # Restore primary Km
@@ -2737,8 +3020,8 @@ sensitivity_reference <- sensitivity_df %>%
     Reference_Combined_Rate_mg_per_kg_per_h =
       Combined_Rate_mg_per_kg_per_h,
     
-    Reference_Best_Model =
-      Best_Model
+    Reference_Model_Interpretation =
+      Model_Interpretation
   )
 
 
@@ -2806,9 +3089,9 @@ sensitivity_comparison <- sensitivity_df %>%
       ),
     
     
-    Best_Model_Changed =
-      Best_Model !=
-      Reference_Best_Model
+    Model_Interpretation_Changed =
+      Model_Interpretation !=
+      Reference_Model_Interpretation
   )
 
 
@@ -2901,13 +3184,13 @@ write.csv(
 
 
 # ============================================================
-# Model preference across Km values
+# Model interpretation across Km values
 # ============================================================
 
 sensitivity_model_preference <- sensitivity_df %>%
   count(
     Km_mg_per_L,
-    Best_Model
+    Model_Interpretation
   ) %>%
   group_by(
     Km_mg_per_L
