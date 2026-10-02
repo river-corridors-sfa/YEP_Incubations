@@ -11,7 +11,7 @@ library(dplyr)
 library(tidyr)
 library(gridExtra)
 
-
+minimum_rmse_improvement_pct <- 5
 # ============================================================
 # Output settings
 # ============================================================
@@ -2111,23 +2111,34 @@ fit_all_yep_models <- function(
     
     summary_row$Model_Interpretation_Basis <-
       "Both combined-model parameters are at lower bounds"
-    
   } else if(
     isTRUE(combined_lower_rmse_than_both) &&
-    isTRUE(combined_lower_abs_ac_than_both)
+    isTRUE(combined_lower_abs_ac_than_both) &&
+    !is.na(Combined_RMSE_Improvement_vs_BestSingle_pct) &&
+    Combined_RMSE_Improvement_vs_BestSingle_pct >=
+    minimum_rmse_improvement_pct
   ) {
     
     summary_row$Model_Interpretation <- "Combined"
     
     summary_row$Model_Interpretation_Basis <-
-      "Both parameters are interior; combined model has lower RMSE and lower absolute lag-1 residual autocorrelation than both single models"
+      paste0(
+        "Both parameters are interior; combined model improves RMSE by at least ",
+        minimum_rmse_improvement_pct,
+        "% and has lower absolute lag-1 residual autocorrelation than both single models"
+      )
     
   } else {
     
-    summary_row$Model_Interpretation <- "ManualReview"
+    summary_row$Model_Interpretation <-
+      Best_Single_Model_RMSE
     
     summary_row$Model_Interpretation_Basis <-
-      "Combined parameters are interior but RMSE and residual-autocorrelation diagnostics do not both favor the combined model"
+      paste0(
+        "Combined model did not meet the ",
+        minimum_rmse_improvement_pct,
+        "% RMSE-improvement criterion; retained lower-RMSE single-component model"
+      )
   }
   
   
@@ -3188,6 +3199,7 @@ write.csv(
 # ============================================================
 
 sensitivity_model_preference <- sensitivity_df %>%
+  filter(Treatment_Type != "Unknown") %>%
   count(
     Km_mg_per_L,
     Model_Interpretation
