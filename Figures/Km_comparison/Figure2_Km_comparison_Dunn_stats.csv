@@ -1,0 +1,7 @@
+Km_Label,Sediment_Type,Parameter,.y.,group1,group2,n1,n2,statistic,p,p.adj,p.adj.signif
+Km = 0.2 mg/L,Dry Sediments,kL,Fitted_Value,Control,Unburned + DOC,5,5,2.121320343559643,0.033894853524689246,0.06778970704937849,ns
+Km = 0.2 mg/L,Dry Sediments,kL,Fitted_Value,Control,High Burn + DOC,5,5,2.3334523779156067,0.019624414976639703,0.058873244929919105,ns
+Km = 0.2 mg/L,Dry Sediments,kL,Fitted_Value,Unburned + DOC,High Burn + DOC,5,5,0.21213203435596412,0.8320040285726367,0.8320040285726367,ns
+Km = 10 mg/L,Wet Sediments,kL,Fitted_Value,Control,Unburned + DOC,5,5,-0.141421356237309,0.8875370839817155,0.8875370839817155,ns
+Km = 10 mg/L,Wet Sediments,kL,Fitted_Value,Control,High Burn + DOC,5,5,-2.192031021678297,0.028377266737987482,0.08513180021396244,ns
+Km = 10 mg/L,Wet Sediments,kL,Fitted_Value,Unburned + DOC,High Burn + DOC,5,5,-2.0506096654409878,0.04030497436254078,0.08513180021396244,ns
