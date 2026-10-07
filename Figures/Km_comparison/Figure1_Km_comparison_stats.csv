@@ -1,5 +1,0 @@
-Km_Label,Parameter,.y.,group1,group2,n1,n2,statistic,p,p_label
-Km = 0.2 mg/L,Vmax,Fitted_Value,Dry Sediments,Wet Sediments,15,15,70,0.08149464839345505,p = 0.081
-Km = 0.2 mg/L,kL,Fitted_Value,Dry Sediments,Wet Sediments,15,15,0,3.3918213908250937e-6,p < 0.001
-Km = 10 mg/L,Vmax,Fitted_Value,Dry Sediments,Wet Sediments,15,15,15,5.7370630084885594e-5,p < 0.001
-Km = 10 mg/L,kL,Fitted_Value,Dry Sediments,Wet Sediments,15,15,0,3.3918213908250937e-6,p < 0.001

@@ -1,7 +1,0 @@
-"Treatment_Type","n","FirstOrder_SSR","Biotic_SSR","Combined_SSR","FirstOrder_RMSE","Biotic_RMSE","Combined_RMSE","Combined_kL_at_lower_bound_n","Combined_Vmax_at_lower_bound_n","Most_Common_Best_Model"
-"Dry_Control",5,61.21,0.971,0.976,0.4059,0.0506,0.0508,5,0,"Biotic"
-"Dry_HighBurn_DOC",5,44.129,0.415,0.418,0.3376,0.0271,0.0272,5,0,"Biotic"
-"Dry_Unburned_DOC",5,31.721,0.461,0.462,0.3392,0.0373,0.0373,4,0,"Biotic"
-"Wet_Control",5,2.133,2.784,0.025,0.0931,0.1251,0.0109,0,0,"Combined"
-"Wet_HighBurn_DOC",5,3.32,1.995,0.012,0.1224,0.1098,0.0085,0,0,"Combined"
-"Wet_Unburned_DOC",5,1.596,1.55,0.02,0.0986,0.1092,0.0106,0,0,"Combined"

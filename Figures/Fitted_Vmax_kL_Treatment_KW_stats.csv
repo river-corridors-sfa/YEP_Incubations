@@ -1,5 +1,0 @@
-Sediment_Type,Parameter,.y.,n,statistic,df,p,method,kw_label,kw_sig
-Dry Sediments,Vmax,Fitted_Value,15,1.1399999999999935,2,0.566,Kruskal-Wallis,KW p = 0.566,FALSE
-Wet Sediments,Vmax,Fitted_Value,15,0.7199999999999989,2,0.698,Kruskal-Wallis,KW p = 0.698,FALSE
-Dry Sediments,kL,Fitted_Value,15,4.939999999999991,2,0.0846,Kruskal-Wallis,KW p = 0.085,FALSE
-Wet Sediments,kL,Fitted_Value,15,6.020000000000003,2,0.0493,Kruskal-Wallis,KW p = 0.049,TRUE

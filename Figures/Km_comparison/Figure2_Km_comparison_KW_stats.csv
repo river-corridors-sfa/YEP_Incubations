@@ -1,9 +1,0 @@
-Km_Label,Sediment_Type,Parameter,.y.,n,statistic,df,p,method,p_label
-Km = 0.2 mg/L,Dry Sediments,Vmax,Fitted_Value,15,3.8600000000000065,2,0.14514819848362326,Kruskal-Wallis,KW p = 0.145
-Km = 0.2 mg/L,Dry Sediments,kL,Fitted_Value,15,6.660000000000004,2,0.035793105067655234,Kruskal-Wallis,KW p = 0.036
-Km = 0.2 mg/L,Wet Sediments,Vmax,Fitted_Value,15,2.6599999999999966,2,0.2644772612998244,Kruskal-Wallis,KW p = 0.264
-Km = 0.2 mg/L,Wet Sediments,kL,Fitted_Value,15,2.5800000000000054,2,0.2752707830897516,Kruskal-Wallis,KW p = 0.275
-Km = 10 mg/L,Dry Sediments,Vmax,Fitted_Value,15,1.1399999999999935,2,0.565525438699539,Kruskal-Wallis,KW p = 0.566
-Km = 10 mg/L,Dry Sediments,kL,Fitted_Value,15,4.939999999999991,2,0.08458485900156511,Kruskal-Wallis,KW p = 0.085
-Km = 10 mg/L,Wet Sediments,Vmax,Fitted_Value,15,0.7199999999999989,2,0.6976763260710315,Kruskal-Wallis,KW p = 0.698
-Km = 10 mg/L,Wet Sediments,kL,Fitted_Value,15,6.020000000000003,2,0.04929167876046208,Kruskal-Wallis,KW p = 0.049
