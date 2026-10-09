@@ -1,0 +1,7 @@
+Sediment_Type,Variable,.y.,group1,group2,n1,n2,statistic,p,p.adj,p.adj.signif
+Wet Sediments,Measured,Value,Control,Unburned + DOC,5,5,0.141421356237309,0.8875370839817155,0.8875370839817155,ns
+Wet Sediments,Measured,Value,Control,High Burn + DOC,5,5,-2.0506096654409878,0.04030497436254078,0.08513180021396244,ns
+Wet Sediments,Measured,Value,Unburned + DOC,High Burn + DOC,5,5,-2.192031021678297,0.028377266737987482,0.08513180021396244,ns
+Wet Sediments,kL,Value,Control,Unburned + DOC,5,5,-0.21213203435596412,0.8320040285726367,0.8320040285726367,ns
+Wet Sediments,kL,Value,Control,High Burn + DOC,5,5,-2.5455844122715705,0.010909498364269304,0.03272849509280791,*
+Wet Sediments,kL,Value,Unburned + DOC,High Burn + DOC,5,5,-2.3334523779156067,0.019624414976639703,0.039248829953279406,*
